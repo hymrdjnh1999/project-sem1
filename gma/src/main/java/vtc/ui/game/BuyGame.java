@@ -55,8 +55,8 @@ public class BuyGame {
         UIUtil.printHeader(line);
         UIUtil.printTextAlign(line, "Buy game fail");
         System.out.println(line);
-        UIUtil.printTextAlign(line, "[You have not enough money!]");
-        UIUtil.printTextAlign(line, "[Please recharge money before buy game]");
+        UIUtil.printTextAlign(line, "You have not enough money!");
+        UIUtil.printTextAlign(line, "Please recharge money before buy game");
         System.out.println(line);
         System.out.print("Enter any key to back...");
         sc.nextLine();
