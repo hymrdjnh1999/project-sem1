@@ -69,8 +69,8 @@ public class UIUtil {
     public static void printHeader(String line) {
 
         String content = "[GMA] Group 1 - PF10";
-        String header = getTextAlign(line, content);
-        System.out.printf(header, "", content);
+        printTextAlign(line, content);
+        printTextAlign(line, "Version : 0.1");
     }
 
     public static int getPositionMidLine(String line, String content) {

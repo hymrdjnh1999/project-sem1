@@ -21,6 +21,7 @@ public class ShowGame {
         sendNotFoundGameReport(gameList);
 
         for (Game game : gameList) {
+            
             System.out.printf("| %-2d %-60s |\n", i, game.getGameName());
             System.out.printf("| %-2s %-60s |\n", "", game.getSupplierName());
             System.out.printf("| %-2s %-60s |\n", "", game.getGameType());

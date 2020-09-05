@@ -16,7 +16,6 @@ public class MainMenu {
             String dashLine = "=====================================================";
             String greeting = "Welcome to game market";
             String report = UIUtil.getTextAlign(dashLine, greeting);
-
             System.out.println(dashLine);
             UIUtil.printHeader(dashLine);
             System.out.printf(report, "", greeting);

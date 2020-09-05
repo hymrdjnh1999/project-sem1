@@ -15,9 +15,9 @@ public class GameMenu {
         UIUtil.printHeader(dashLine);
         UIUtil.printTextAlign(dashLine, "View and search game");
         System.out.println(dashLine);
-        System.out.println("| 1. View game list                                 |");
-        System.out.println("| 2. Search game                                    |");
-        System.out.println("| 0. Back                                           |");
+        UIUtil.printTextNormal(dashLine, "1. View game list ");
+        UIUtil.printTextNormal(dashLine, "2. Search game");
+        UIUtil.printTextNormal(dashLine, "0. Back");
         System.out.println(dashLine);
         gameMenuSwitch();
     }
