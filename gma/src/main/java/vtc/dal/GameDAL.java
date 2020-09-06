@@ -29,7 +29,7 @@ public class GameDAL {
     }
 
     public Game getGameByID(int gameID) {
-        String sql = "{call getGameByID(?)}";   
+        String sql = "{call getGameByID(?)}";
         Game game = new Game();
         try (Connection connection = DbUtil.getConnection();
                 CallableStatement callableStatement = connection.prepareCall(sql);) {

@@ -9,99 +9,108 @@ SET SQL_SAFE_UPDATES = 0;
 
 -- 3: CREATE TABLE accounts
 CREATE TABLE accounts (
-    accountID 		INT 			AUTO_INCREMENT,
-    userName 		NVARCHAR(225) 	NOT NULL,
-    pass 			VARCHAR(225) 	NOT NULL,
-    firstName 		VARCHAR(225) 	NOT NULL,
-    lastName 		VARCHAR(225) 	NOT NULL,
-    birthday 		DATE 			NOT NULL,
-    address 		VARCHAR(255) 	NOT NULL,
-    phone 			VARCHAR(11)	 	NOT NULL UNIQUE,
-    money			DOUBLE 			NOT NULL DEFAULT 0,
-    mail 			VARCHAR(225) 	UNIQUE,
-    position 		VARCHAR(225) 	NOT NULL,
-    createDATE 		DATE 			NOT NULL,
-    accountStatus 	VARCHAR(225) 	NOT NULL,
+    accountID INT AUTO_INCREMENT,
+    userName NVARCHAR(225) NOT NULL,
+    pass VARCHAR(225) NOT NULL,
+    firstName VARCHAR(225) NOT NULL,
+    lastName VARCHAR(225) NOT NULL,
+    birthday DATE NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    phone VARCHAR(11) NOT NULL UNIQUE,
+    money DOUBLE NOT NULL DEFAULT 0,
+    mail VARCHAR(225) UNIQUE,
+    position VARCHAR(225) NOT NULL,
+    createDATE DATE NOT NULL,
+    accountStatus VARCHAR(225) NOT NULL,
     PRIMARY KEY (accountID)
 );
 -- 4: CREATE TABLE category
 CREATE TABLE category (
-    categoryID 		INT 			AUTO_INCREMENT,
-    categoryName 	NVARCHAR(255) 	NOT NULL,
+    categoryID INT AUTO_INCREMENT,
+    categoryName NVARCHAR(255) NOT NULL,
     PRIMARY KEY (categoryID)
 );
 
 -- 5: CREATE TABLE supplier
 CREATE TABLE supplier (
-    supplierID 		INT 			AUTO_INCREMENT,
-    supplierName 	NVARCHAR(255) 	NOT NULL,
+    supplierID INT AUTO_INCREMENT,
+    supplierName NVARCHAR(255) NOT NULL,
     PRIMARY KEY (supplierID)
 );
 
 -- 6: CREATE TABLE game
 CREATE TABLE game (
-    gameID 			INT 			AUTO_INCREMENT,
-    supplierID 		INT				NOT NULL,
-    gameName 		NVARCHAR(225) 	NOT NULL,
-    gameDescription TEXT 			NOT NULL,
-    gamePrice 		DOUBLE 			NOT NULL,
-    rating 			DOUBLE 			NOT NULL,
-    gameDownloadTimes INT 			NOT NULL,
-    size 			VARCHAR(225) 	NOT NULL,
-    gameStatus 		VARCHAR(225) 	NOT NULL,
-    FOREIGN KEY (supplierID) REFERENCES supplier (supplierID),
+    gameID INT AUTO_INCREMENT,
+    supplierID INT NOT NULL,
+    gameName NVARCHAR(225) NOT NULL,
+    gameDescription TEXT NOT NULL,
+    gamePrice DOUBLE NOT NULL,
+    rating DOUBLE NOT NULL,
+    gameDownloadTimes INT NOT NULL,
+    size VARCHAR(225) NOT NULL,
+    gameStatus VARCHAR(225) NOT NULL,
+    FOREIGN KEY (supplierID)
+        REFERENCES supplier (supplierID),
     PRIMARY KEY (gameID)
 );
 
 
 -- 7: CREATE TABLE categoryDetail 
 CREATE TABLE categoryDetail (
-    categoryID 		INT,
-    gameID 			INT,
-    FOREIGN KEY (categoryID) REFERENCES category (categoryID),
-    FOREIGN KEY (gameID) REFERENCES game (gameID),
+    categoryID INT,
+    gameID INT,
+    FOREIGN KEY (categoryID)
+        REFERENCES category (categoryID),
+    FOREIGN KEY (gameID)
+        REFERENCES game (gameID),
     PRIMARY KEY (categoryID , gameID)
 );
 
 -- 8: CREATE TABLE rate
 CREATE TABLE rate (
-    rateID			INT 			AUTO_INCREMENT,
-    accountID 		INT,
-    gameID 			INT,
-    content			VARCHAR(225)  	NOT NULL,
-    rateContent		DOUBLE 			NOT NULL,
-    rateDate 		DATE 			NOT NULL,
-    FOREIGN KEY (accountID) REFERENCES accounts (accountID),
-    FOREIGN KEY (gameID) REFERENCES game (gameID),
+    rateID INT AUTO_INCREMENT,
+    accountID INT,
+    gameID INT,
+    content VARCHAR(225) NOT NULL,
+    rateContent DOUBLE NOT NULL,
+    rateDate DATE NOT NULL,
+    FOREIGN KEY (accountID)
+        REFERENCES accounts (accountID),
+    FOREIGN KEY (gameID)
+        REFERENCES game (gameID),
     PRIMARY KEY (rateID , accountID , gameID)
 );
 
 -- 9: CREATE TABLE orders
 CREATE TABLE orders (
-    orderID 		INT 			AUTO_INCREMENT,
-    accountID 		INT				NOT NULL,	
-	gameID 			INT				NOT NULL,	
-    priceOfgame 	DOUBLE 			NOT NULL,
-    orderCreateDate VARCHAR(255) 	NOT NULL,
-    totalBill 		DOUBLE			NOT NULL,
-    orderstatus 	NVARCHAR(255)	NOT NULL,
-    FOREIGN KEY (accountID) REFERENCES accounts (accountID) ON DELETE CASCADE,
-     FOREIGN KEY (gameID) REFERENCES game (gameID) ON DELETE CASCADE,
-    PRIMARY KEY (orderID )
+    orderID INT AUTO_INCREMENT,
+    accountID INT NOT NULL,
+    gameID INT NOT NULL,
+    priceOfgame DOUBLE NOT NULL,
+    orderCreateDate VARCHAR(255) NOT NULL,
+    totalBill DOUBLE NOT NULL,
+    orderstatus NVARCHAR(255) NOT NULL,
+    FOREIGN KEY (accountID)
+        REFERENCES accounts (accountID)
+        ON DELETE CASCADE,
+    FOREIGN KEY (gameID)
+        REFERENCES game (gameID)
+        ON DELETE CASCADE,
+    PRIMARY KEY (orderID)
 );
 
 -- 11: CREATE TABLE options 
 CREATE TABLE options (
-    optionID 		INT 			AUTO_INCREMENT,
-    optionName		NVARCHAR(225)	NOT NULL,
-    resources 		VARCHAR(225)	NOT NULL,
+    optionID INT AUTO_INCREMENT,
+    optionName NVARCHAR(225) NOT NULL,
+    resources VARCHAR(225) NOT NULL,
     PRIMARY KEY (optionID)
 );
 
 -- 12: CREATE TABLE gameOption
 CREATE TABLE gameOption (
-    optionID 		INT				NOT NULL,
-    gameID 			INT				NOT NULL,
+    optionID INT NOT NULL,
+    gameID INT NOT NULL,
     FOREIGN KEY (optionID)
         REFERENCES options (optionID)
         ON DELETE CASCADE,
@@ -1778,14 +1787,29 @@ DELIMITER $$
 CREATE PROCEDURE getGameByID(IN gameID INT)
 
 BEGIN
-	SELECT g.gameName,g.gameID, s.supplierName,concat(substr(g.gameDescription,1,30),'...view more')AS gameDescription,g.gamePrice,c.categoryName AS `gameType`,g.rating,g.gameDownloadTimes,g.size
- FROM game AS g INNER JOIN categoryDetail AS cd ON cd.gameID = g.gameID INNER JOIN category AS c ON c.categoryID = cd.categoryID 
- INNER JOIN supplier AS s ON g.supplierID = s.supplierID
+	SELECT 
+    g.gameName,
+    g.gameID,
+    s.supplierName,
+    CONCAT(SUBSTR(g.gameDescription, 1, 30),
+            '...view more') AS gameDescription,
+    g.gamePrice,
+    c.categoryName AS `gameType`,
+    g.rating,
+    g.gameDownloadTimes,
+    g.size
+FROM
+    game AS g
+        INNER JOIN
+    categoryDetail AS cd ON cd.gameID = g.gameID
+        INNER JOIN
+    category AS c ON c.categoryID = cd.categoryID
+        INNER JOIN
+    supplier AS s ON g.supplierID = s.supplierID
     WHERE g.gameID = gameID;
 END; $$
 DELIMITER ;
 -- end getGameByID
-call getGameByID(4);
 DELIMITER $$
 CREATE PROCEDURE createOrder(IN accountID INT,IN gameID INT,IN priceOfGame DOUBLE, IN orderCreateDate VARCHAR(255) ,IN totalBill double ,IN orderStatus VARCHAR(255))
 BEGIN
@@ -1866,12 +1890,13 @@ DELIMITER ;
 -- end buyGame
 
 DELIMITER $$
-
 CREATE PROCEDURE updateTimesDownload(IN  gameID int)
 BEGIN
-	update game as g
-    set g.gameDownloadTimes = g.gameDownloadTimes + 1
-	where g.gameID= gameID;
+	UPDATE game AS g 
+SET 
+    g.gameDownloadTimes = g.gameDownloadTimes + 1
+WHERE
+    g.gameID = gameID;
 END ; $$
 DELIMITER ;
 -- end updateTimesDownload
@@ -1879,10 +1904,25 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE searchGame(IN  gameName varchar(255),IN offsets INT)
 BEGIN
-	SELECT g.gameName,g.gameID, s.supplierName,concat(substr(g.gameDescription,1,30),'...view more')AS description,g.gamePrice,c.categoryName AS `game type`,g.rating,g.gameDownloadTimes,g.size
- FROM game AS g INNER JOIN categoryDetail AS cd ON cd.gameID = g.gameID INNER JOIN category AS c ON c.categoryID = cd.categoryID 
- INNER JOIN supplier AS s ON g.supplierID = s.supplierID
- where g.gameName like concat('%',gameName,'%')
+	SELECT 
+    g.gameName,
+    g.gameID,
+    s.supplierName,
+    CONCAT(SUBSTR(g.gameDescription, 1, 30),
+            '...view more') AS gameDescription,
+    g.gamePrice,
+    c.categoryName AS `gameType`,
+    g.rating,
+    g.gameDownloadTimes,
+    g.size
+FROM
+    game AS g
+        INNER JOIN
+    categoryDetail AS cd ON cd.gameID = g.gameID
+        INNER JOIN
+    category AS c ON c.categoryID = cd.categoryID
+        INNER JOIN
+    supplier AS s ON g.supplierID = s.supplierID
 ORDER BY g.gamename
  LIMIT 6 OFFSET offsets;
 END ; $$
