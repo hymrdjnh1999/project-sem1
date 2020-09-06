@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vtc.persistances.Game;
+import vtc.ui.game.GameMenu;
 
 public class GameDAL {
     public List<Game> getAllGames(int offset) {
@@ -27,8 +28,25 @@ public class GameDAL {
         return gameList;
     }
 
+    public Game getGameByID(int gameID) {
+        String sql = "{call getGameByID(?)}";   
+        Game game = new Game();
+        try (Connection connection = DbUtil.getConnection();
+                CallableStatement callableStatement = connection.prepareCall(sql);) {
+            callableStatement.setInt(1, gameID);
+            ResultSet resultSet = callableStatement.executeQuery();
+            if (resultSet.next()) {
+                game = getGame(resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return game;
+
+    }
+
     public int getDownloadTime(int gameID) {
-        String sql = "{call getGameByID(?)}";
+        String sql = "{call getDownloadTimes(?)}";
         int downloadTimes = -1;
         try {
             Connection connection = DbUtil.getConnection();
@@ -88,17 +106,22 @@ public class GameDAL {
         return false;
     }
 
-    private Game getGame(final ResultSet resultSet) throws SQLException {
+    private Game getGame(final ResultSet resultSet) {
         Game game = new Game();
-        game.setGameID(resultSet.getInt("gameID"));
-        game.setGameDescription(resultSet.getString("description"));
-        game.setGamePrice(resultSet.getDouble("gamePrice"));
-        game.setGameSize(resultSet.getString("size"));
-        game.setGameName(resultSet.getString("gameName"));
-        game.setGameDownloadTimes(resultSet.getInt("gameDownloadTimes"));
-        game.setVoteRate(resultSet.getFloat("rating"));
-        game.setSupplierName(resultSet.getString("supplierName"));
-        game.setGameType(resultSet.getString("game type"));
+        try {
+            game.setGameID(resultSet.getInt("gameID"));
+            game.setGameDescription(resultSet.getString("gameDescription"));
+            game.setGamePrice(resultSet.getDouble("gamePrice"));
+            game.setGameSize(resultSet.getString("size"));
+            game.setGameName(resultSet.getString("gameName"));
+            game.setGameDownloadTimes(resultSet.getInt("gameDownloadTimes"));
+            game.setVoteRate(resultSet.getFloat("rating"));
+            game.setSupplierName(resultSet.getString("supplierName"));
+            game.setGameType(resultSet.getString("gametype"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return game;
     }
 }

@@ -3,6 +3,7 @@ package vtc.bl;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import vtc.dal.OrderDAL;
 import vtc.persistances.Account;
@@ -13,7 +14,7 @@ public class OrderBL {
     private OrderDAL orderDAL = new OrderDAL();
   
 
-    public void initOrder(Game game, Account account) {
+    public void initOrder(Game game, Account account) throws Exception {
         Order order = new Order();
         String date = "";
         Date now = new Date();
@@ -33,5 +34,10 @@ public class OrderBL {
         return order;
     }
 
+    //
+    public List<Order> getOrders(int accountID) {
+        List<Order> orders = orderDAL.getOrders(accountID);
+        return orders;
+    }
 
 }

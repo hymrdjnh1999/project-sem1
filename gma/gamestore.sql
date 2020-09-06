@@ -1,11 +1,12 @@
--- 1: Create databASe 
--- Kiểm tra databASe có tồn tại hay không mới xóa
+-- 1: Create database 
+-- Kiểm tra database có tồn tại hay không mới xóa
 DROP DATABASE IF EXISTS gameStore;
 -- Kiểm tra database có tồn tại không mới tạo 
 CREATE DATABASE IF NOT EXISTS gameStore;
 -- 2: sử dụng database shoppe
 use gameStore;
 SET SQL_SAFE_UPDATES = 0;
+
 -- 3: CREATE TABLE accounts
 CREATE TABLE accounts (
     accountID 		INT 			AUTO_INCREMENT,
@@ -1756,7 +1757,7 @@ DELIMITER $$
 CREATE PROCEDURE getAllgames(IN sets INT)
 
 BEGIN
-SELECT g.gameName,g.gameID, s.supplierName,concat(substr(g.gameDescription,1,30),'...view more')AS description,g.gamePrice,c.categoryName AS `game type`,g.rating,g.gameDownloadTimes,g.size
+SELECT g.gameName,g.gameID, s.supplierName,concat(substr(g.gameDescription,1,30),'...view more')AS gameDescription,g.gamePrice,c.categoryName AS `gameType`,g.rating,g.gameDownloadTimes,g.size
  FROM game AS g INNER JOIN categoryDetail AS cd ON cd.gameID = g.gameID INNER JOIN category AS c ON c.categoryID = cd.categoryID 
  INNER JOIN supplier AS s ON g.supplierID = s.supplierID
 ORDER BY g.gamename
@@ -1765,14 +1766,26 @@ END; $$
 DELIMITER ;
 -- end getallgames
 DELIMITER $$
-CREATE PROCEDURE getGameByID(IN gameID INT)
+CREATE PROCEDURE getDownloadTimes(IN gameID INT)
 
 BEGIN
 	SELECT g.gameDownloadTimes from game as g 
     WHERE g.gameID = gameID;
 END; $$
 DELIMITER ;
--- end getallgames
+-- end getDownloadTimes
+DELIMITER $$
+CREATE PROCEDURE getGameByID(IN gameID INT)
+
+BEGIN
+	SELECT g.gameName,g.gameID, s.supplierName,concat(substr(g.gameDescription,1,30),'...view more')AS gameDescription,g.gamePrice,c.categoryName AS `gameType`,g.rating,g.gameDownloadTimes,g.size
+ FROM game AS g INNER JOIN categoryDetail AS cd ON cd.gameID = g.gameID INNER JOIN category AS c ON c.categoryID = cd.categoryID 
+ INNER JOIN supplier AS s ON g.supplierID = s.supplierID
+    WHERE g.gameID = gameID;
+END; $$
+DELIMITER ;
+-- end getGameByID
+call getGameByID(4);
 DELIMITER $$
 CREATE PROCEDURE createOrder(IN accountID INT,IN gameID INT,IN priceOfGame DOUBLE, IN orderCreateDate VARCHAR(255) ,IN totalBill double ,IN orderStatus VARCHAR(255))
 BEGIN
@@ -1835,6 +1848,14 @@ DELIMITER ;
 
 DELIMITER $$
 
+CREATE PROCEDURE getOrders(IN  accountID INT)
+BEGIN
+	SELECT * FROM orders AS o 
+    WHERE o.accountID = accountID;
+END ; $$
+DELIMITER ;
+DELIMITER $$
+call getOrders(4);
 CREATE PROCEDURE buyGame(IN  gamePrice double, IN userName VARCHAR(255))
 BEGIN
 	update accounts as ac 

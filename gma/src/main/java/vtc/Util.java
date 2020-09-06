@@ -14,7 +14,7 @@ public class Util {
         }
         return false;
     }
-
+  
     public static String getMD5(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");

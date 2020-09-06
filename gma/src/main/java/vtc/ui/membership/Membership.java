@@ -15,6 +15,7 @@ import vtc.ui.MainMenu;
 public class Membership {
     static Scanner sc = new Scanner(System.in);
     private static Account account = new Account();
+   
 
     public Account getAccount() {
 

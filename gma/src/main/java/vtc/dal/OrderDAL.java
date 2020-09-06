@@ -5,6 +5,8 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import vtc.persistances.Order;
 
@@ -32,14 +34,30 @@ public class OrderDAL {
             cas.setInt(2, accountID);
             ResultSet rs = cas.executeQuery();
             if (rs.next()) {
-                order = setProperties(rs);
+                order = getOrder(rs);
             }
         } catch (Exception e) {
         }
         return order;
     }
+    
+    //
+    public List<Order> getOrders( int accountID) {
+        List<Order> orders = new ArrayList<>();
+        String sql = "{call getOrders(?)}";
+        try (Connection con = DbUtil.getConnection(); CallableStatement cas = con.prepareCall(sql);) {
+            cas.setInt(1, accountID);
+            ResultSet rs = cas.executeQuery();
+            while (rs.next()) {
+                orders.add(getOrder(rs));
+            }
+        } catch (Exception e) {
+        }
+        return orders;
+    }
+    
 
-    private Order setProperties(ResultSet rs) throws SQLException 
+    private Order getOrder(ResultSet rs) throws SQLException 
     {
         Order order = new Order();
         order.setOrderID(rs.getInt("orderID"));
@@ -52,5 +70,7 @@ public class OrderDAL {
         return order;
         
     }
+
+
 
 }

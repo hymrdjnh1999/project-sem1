@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import vtc.ui.game.GameMenu;
 import vtc.ui.membership.Membership;
+import vtc.ui.order.OrderMenu;
 
 public class MainMenu {
 
@@ -35,12 +36,15 @@ public class MainMenu {
         System.out.print("Please enter your choose: ");
         String theChoose = sc.nextLine();
         switch (theChoose) {
-            case "1":   
+            case "1":
                 UIUtil.clrscr();
                 membership.loginForm();
                 break;
             case "2":
                 GameMenu.displayGameMenu();
+                break;
+            case "3":
+                OrderMenu.displayOrderMenu();
                 break;
             case "0":
                 System.exit(1);

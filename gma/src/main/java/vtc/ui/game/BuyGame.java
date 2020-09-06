@@ -45,7 +45,10 @@ public class BuyGame {
         }
         new AccountBL().subtractMoney(this.game, account.getUserName());
         new GameBL().increaseDownloadTimes(game.getGameID());
-        showOrderDetail();
+        OrderBL orderBL = new OrderBL();
+        orderBL.initOrder(game, account);
+        Order order = new OrderBL().getCurrentOrder(game.getGameID(), account.getAccountID());
+        showOrderDetail(order);
         return; // return to current game detail
     }
 
@@ -69,12 +72,9 @@ public class BuyGame {
         sc.nextLine();
     }
 
-    public void showOrderDetail() {
-        OrderBL orderBL = new OrderBL();
+    public static void showOrderDetail(Order order) throws Exception {
         Account account = new Membership().getAccount();
-        orderBL.initOrder(game, account);
-        ;
-        Order order = new OrderBL().getCurrentOrder(game.getGameID(), account.getAccountID());
+        Game game = new GameBL().getGameByID(order.getGameID());
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("E MM, yyyy HH:mm aa");
         String line = "--------------------------------------------------------------------------------";
@@ -120,4 +120,5 @@ public class BuyGame {
         return true;
 
     }
+
 }

@@ -21,7 +21,12 @@ public class GameBL {
     public void increaseDownloadTimes(int gameID) {
         gameDAL.updateDownloadTimes(gameID);
     }
-
+    public Game getGameByID(int gameID)
+    {
+        Game game = new Game();
+        game  =  gameDAL.getGameByID(gameID);
+        return game;
+    }
     public int getDownloadTimes(int gameID) {
         int downloadTimes = gameDAL.getDownloadTime(gameID);
         return downloadTimes;
