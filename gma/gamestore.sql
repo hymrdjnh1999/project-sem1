@@ -1879,7 +1879,7 @@ BEGIN
 END ; $$
 DELIMITER ;
 DELIMITER $$
-call getOrders(4);
+
 CREATE PROCEDURE buyGame(IN  gamePrice double, IN userName VARCHAR(255))
 BEGIN
 	update accounts as ac 
@@ -1923,6 +1923,7 @@ FROM
     category AS c ON c.categoryID = cd.categoryID
         INNER JOIN
     supplier AS s ON g.supplierID = s.supplierID
+where g.gameName like (concat('%',gamename,'%'))
 ORDER BY g.gamename
  LIMIT 6 OFFSET offsets;
 END ; $$
@@ -1937,4 +1938,5 @@ DELIMITER $$
 	END IF ;
 	END $$ 
 DELIMITER ;
-call buygame(500000,'voibenho');	
+
+
