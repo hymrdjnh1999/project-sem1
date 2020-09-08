@@ -2,6 +2,7 @@ package vtc.ui.membership;
 
 import java.util.Scanner;
 
+import vtc.Util;
 import vtc.bl.AccountBL;
 import vtc.persistances.Account;
 import vtc.ui.UIUtil;
@@ -12,35 +13,48 @@ public class RechargeMoney {
     private static AccountBL accountBL = new AccountBL();
 
     protected static void rechargeMoney(Account _account) throws Exception {
-        Double money;
+
         account = _account;
-        displayBalanceInfo();
-        money = enterMoney();
-        sendRechargeReport(money);
-        UIUtil.backMembershipMenu();
+        while (true) {
+            displayBalanceInfo();
+            Double money = enterMoney();
+            checkOutRechargeMoney(money);
+        }
+
+    }
+
+    private static void checkOutRechargeMoney(Double money) throws Exception {
+        String line = "-------------------------------------------------------------------------------";
+        UIUtil.clrscr();
+        System.out.println(line);
+        UIUtil.printHeader(line);
+        UIUtil.printTextAlign(line, "Check out recharge money");
+        System.out.println(line);
+        String yn = Util
+                .getYesNo("Do you want recharge [" + UIUtil.separatorNumber(money) + "] VND to your wallet?(y/n)");
+        if (yn.equalsIgnoreCase("y")) {
+            sendRechargeReport(money);
+            UIUtil.backMembershipMenu();
+        }
+        return;
     }
 
     private static void displayBalanceInfo() {
-        String line = "-------------------------------------------------";
+        String line = "-------------------------------------------------------------------------------";
         account = accountBL.getAccount(account.getUserName());
         String money = UIUtil.separatorNumber(account.getMoney());
-
+        UIUtil.clrscr();
         System.out.println(line);
         UIUtil.printHeader(line);
         UIUtil.printTextAlign(line, "Recharge Money");
         System.out.println(line);
-
-        System.out.printf("| %-45s |\n", "");
-
-        System.out.printf("| %-30s%-15s |\n", "Name", "");
-        System.out.printf("| %-30s%-15s |\n", account.getFullName(), "");
-
-        System.out.printf("| %-45s |\n", "");
-
-        System.out.printf("| %-30s%-15s |\n", "Balance", "");
-        System.out.printf("| %-45s |\n", money + " VND");
-
-        System.out.printf("| %-45s |\n", "");
+        UIUtil.printTextNormal(line, " ");
+        UIUtil.printTextNormal(line, "Name");
+        UIUtil.printTextNormal(line, account.getFullName());
+        UIUtil.printTextNormal(line, " ");
+        UIUtil.printTextNormal(line, "Balance");
+        UIUtil.printTextNormal(line, money + " VND");
+        UIUtil.printTextNormal(line, " ");
         System.out.println(line);
     }
 
