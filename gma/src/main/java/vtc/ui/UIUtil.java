@@ -68,7 +68,7 @@ public class UIUtil {
 
     public static void printHeader(String line) {
 
-        String content = "[GMA] Group 1 - PF10";
+        String content = "[Game Market Application] Group 1 - PF10";
         printTextAlign(line, content);
         printTextAlign(line, "Version : 0.1");
     }
