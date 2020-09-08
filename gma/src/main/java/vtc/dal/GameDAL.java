@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import vtc.persistances.Game;
-import vtc.ui.game.GameMenu;
 
 public class GameDAL {
     public List<Game> getAllGames(int offset) {
@@ -22,6 +20,7 @@ public class GameDAL {
             while (resultSet.next()) {
                 gameList.add(getGame(resultSet));
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -38,6 +37,7 @@ public class GameDAL {
             if (resultSet.next()) {
                 game = getGame(resultSet);
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -56,6 +56,7 @@ public class GameDAL {
             while (resultSet.next()) {
                 downloadTimes = resultSet.getInt("gameDownloadTimes");
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -67,6 +68,7 @@ public class GameDAL {
         try (Connection con = DbUtil.getConnection(); CallableStatement cas = con.prepareCall(sql);) {
             cas.setInt(1, gameID);
             cas.execute();
+            con.close();
         } catch (Exception e) {
         }
     }
@@ -83,6 +85,7 @@ public class GameDAL {
             while (resultSet.next()) {
                 gameList.add(getGame(resultSet));
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -98,6 +101,7 @@ public class GameDAL {
             cas.setInt(2, accountID);
             ResultSet rs = cas.executeQuery();
             if (rs.next()) {
+                connection.close();
                 return true;
             }
         } catch (Exception e) {

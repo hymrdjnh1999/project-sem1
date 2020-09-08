@@ -19,6 +19,7 @@ public class AccountDAL {
             callableStatement.setString(1, userName);
             callableStatement.setDouble(2, money);
             callableStatement.execute();
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,8 +31,10 @@ public class AccountDAL {
             cas.setString(1, userName);
             ResultSet rs = cas.executeQuery();
             if (rs.next()) {
+                connection.close();
                 return true;
             }
+
         } catch (Exception e) {
         }
         return false;
@@ -49,6 +52,7 @@ public class AccountDAL {
             if (rs.next()) {
                 password = rs.getString("pass");
             }
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,6 +71,7 @@ public class AccountDAL {
             if (rs.next()) {
                 account = setAccountProperties(rs);
             }
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,19 +92,21 @@ public class AccountDAL {
             account.setEmail(rs.getString("mail"));
             account.setAccountCreatedDate(rs.getDate("createDate"));
             account.setStatus("active");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return account;
     }
 
-    public void accountBuyGame(Game game,String userName) {
+    public void accountBuyGame(Game game, String userName) {
         String sql = "{call buyGame(?,?)}";
-        
+
         try (Connection con = DbUtil.getConnection(); CallableStatement cas = con.prepareCall(sql);) {
             cas.setDouble(1, game.getGamePrice());
             cas.setString(2, userName);
             cas.execute();
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

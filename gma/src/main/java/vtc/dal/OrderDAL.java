@@ -21,6 +21,7 @@ public class OrderDAL {
             cas.setDouble(5, order.getTotalBill());
             cas.setString(6, order.getOrderStatus());
             cas.execute();
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,12 +37,13 @@ public class OrderDAL {
             if (rs.next()) {
                 order = getOrder(rs);
             }
+            con.close();
         } catch (Exception e) {
         }
         return order;
     }
-    
-    public List<Order> getOrders( int accountID) {
+
+    public List<Order> getOrders(int accountID) {
         List<Order> orders = new ArrayList<>();
         String sql = "{call getOrders(?)}";
         try (Connection con = DbUtil.getConnection(); CallableStatement cas = con.prepareCall(sql);) {
@@ -50,14 +52,13 @@ public class OrderDAL {
             while (rs.next()) {
                 orders.add(getOrder(rs));
             }
+            con.close();
         } catch (Exception e) {
         }
         return orders;
     }
-    
 
-    private Order getOrder(ResultSet rs) throws SQLException 
-    {
+    private Order getOrder(ResultSet rs) throws SQLException {
         Order order = new Order();
         order.setOrderID(rs.getInt("orderID"));
         order.setGameID(rs.getInt("gameID"));
@@ -67,9 +68,7 @@ public class OrderDAL {
         order.setAccountID(rs.getInt("accountID"));
         order.setOrderStatus(rs.getString("orderStatus"));
         return order;
-        
+
     }
-
-
 
 }
