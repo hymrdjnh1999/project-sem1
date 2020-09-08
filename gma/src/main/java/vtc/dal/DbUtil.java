@@ -11,7 +11,7 @@ public class DbUtil {
     private static Connection connection;
     private static String url = "jdbc:mysql://localhost:3306/gameStore";
     private static String user = "root";
-    private static String password = "adolphin123";
+    private static String password = "Rhyder1803";
 
     public static Connection getConnection() throws SQLException {
         connection = DriverManager.getConnection(url, user, password);

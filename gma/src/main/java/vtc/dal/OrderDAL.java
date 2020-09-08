@@ -41,7 +41,6 @@ public class OrderDAL {
         return order;
     }
     
-    //
     public List<Order> getOrders( int accountID) {
         List<Order> orders = new ArrayList<>();
         String sql = "{call getOrders(?)}";

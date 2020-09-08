@@ -47,5 +47,19 @@ public class Util {
 
         return yn;
     }
+    public static Integer getIntegerNumber(String content){
+        Integer output = null;
+        System.out.print(content);
+        while(true)
+        {
+            try {
+                output = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (Exception e) {
+                System.out.println("Enter wrong data type. Please re-enter !");
+            }
+        }
+        return output;
+    }
 
 }

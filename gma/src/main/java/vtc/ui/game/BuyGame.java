@@ -72,7 +72,7 @@ public class BuyGame {
         sc.nextLine();
     }
 
-    public static void showOrderDetail(Order order) throws Exception {
+    public  void showOrderDetail(Order order) throws Exception {
         Account account = new Membership().getAccount();
         Game game = new GameBL().getGameByID(order.getGameID());
         Date now = new Date();

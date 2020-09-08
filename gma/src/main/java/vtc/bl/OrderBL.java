@@ -34,7 +34,6 @@ public class OrderBL {
         return order;
     }
 
-    //
     public List<Order> getOrders(int accountID) {
         List<Order> orders = orderDAL.getOrders(accountID);
         return orders;

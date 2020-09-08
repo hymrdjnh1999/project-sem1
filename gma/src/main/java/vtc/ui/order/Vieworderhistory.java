@@ -3,37 +3,106 @@ package vtc.ui.order;
 import java.util.List;
 import java.util.Scanner;
 
+import vtc.Util;
 import vtc.bl.GameBL;
 import vtc.bl.OrderBL;
 import vtc.persistances.Account;
 import vtc.persistances.Game;
 import vtc.persistances.Order;
 import vtc.ui.UIUtil;
+import vtc.ui.game.BuyGame;
 import vtc.ui.membership.Membership;
 
 public class Vieworderhistory {
     static Scanner sc = new Scanner(System.in);
-    public void showOrderList() throws Exception {
-        Account account = new Membership().getAccount();
-        List<Order> orders = new OrderBL().getOrders(account.getAccountID());
-        
+    private static List<Order> orders;
+
+    public void VerifyLogin() throws Exception {
         String line = "--------------------------------------------------------------------------------";
-        String separatorLine = "|------------------------------------------------------------------------------|";
         UIUtil.clrscr();
         System.out.println(line);
         UIUtil.printHeader(line);
-        UIUtil.printTextAlign(line, "Order");
-        System.out.println(separatorLine);
-        for (Order order: orders) {
-            int gameID = order.getGameID();
-            Game game = new GameBL().getGameByID(gameID);
-            UIUtil.printTextNormal(line, "Order ID : " + order.getOrderID());
-            UIUtil.printTextNormal(line, "Game name : " + game.getGameName());
-            System.out.println(separatorLine);
+        if (!isLogin()) {
+            UIUtil.printTextAlign(line, "Error reprot");
+            System.out.println(line);
+            UIUtil.printTextAlign(line, "You must have to login before view order history!");
+            System.out.println(line);
+
+            System.out.print("Enter any key to continue...");
+
+            sc.nextLine();
+            return;
         }
-        System.out.println(line);
-        System.out.print("Enter any key to back...");
-        sc.nextLine();
+        Account account = new Membership().getAccount();
+        orders = new OrderBL().getOrders(account.getAccountID());
+        showOrderList();
     }
-  
+
+    private boolean isLogin() {
+        Account account = new Membership().getAccount();
+        if (!account.getStatus().equalsIgnoreCase("non-active")) {
+            return true;
+        }
+        return false;
+    }
+
+    public void showOrderList() throws Exception {
+        String line = "--------------------------------------------------------------------------------";
+        String separatorLine = "|------------------------------------------------------------------------------|";
+        while (true) {
+            UIUtil.printTextAlign(line, "Order");
+            System.out.println(separatorLine);
+            if (orders.size() < 1) {
+                UIUtil.printTextAlign(line, "Not found order!");
+                System.out.println(line);
+                System.out.print("Enter any key to back...");
+                sc.nextLine();
+                return; // return to Order Menu
+            }
+            for (Order order : orders) {
+                int gameID = order.getGameID();
+                Game game = new GameBL().getGameByID(gameID);
+                UIUtil.printTextNormal(line, "Order ID : " + order.getOrderID());
+                UIUtil.printTextNormal(line, "Game name : " + game.getGameName());
+                System.out.println(separatorLine);
+            }
+            int orderID = handleOrderDetail();
+            Order order = getOrder(orderID);
+            new BuyGame().showOrderDetail(order);
+        }
+    }
+
+    int handleOrderDetail() {
+        int orderID;
+        while (true) {
+            int orderIDInput = Util.getIntegerNumber("Enter order id to view : ");
+            if (isExistOrderID(orderIDInput)) {
+                orderID = orderIDInput;
+                break;
+            }
+            System.out.println("Order id not found!");
+
+        }
+        return orderID;
+    }
+
+    boolean isExistOrderID(int orderID) {
+        for (Order o : orders) {
+            if (o.getOrderID() == orderID) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    Order getOrder(int orderID) {
+        Order order = new Order();
+        for (Order o : orders) {
+            if (o.getOrderID() == orderID) {
+                order = o;
+            }
+        }
+        return order;
+    }
+
 }
