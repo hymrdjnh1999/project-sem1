@@ -10,7 +10,6 @@ public class OrderMenu {
     static Scanner sc = new Scanner(System.in);
 
     public static void displayOrderMenu() throws Exception {
-
         UIUtil.clrscr();
         System.out.println(dashLine);
         UIUtil.printHeader(dashLine);

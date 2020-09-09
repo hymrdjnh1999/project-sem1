@@ -3,7 +3,7 @@ package vtc.ui.order;
 import java.util.List;
 import java.util.Scanner;
 
-import vtc.Util;
+
 import vtc.bl.GameBL;
 import vtc.bl.OrderBL;
 import vtc.persistances.Account;
@@ -19,23 +19,23 @@ public class Vieworderhistory {
 
     public void VerifyLogin() throws Exception {
         String line = "--------------------------------------------------------------------------------";
-        UIUtil.clrscr();
-        System.out.println(line);
-        UIUtil.printHeader(line);
-        if (!isLogin()) {
-            UIUtil.printTextAlign(line, "Error reprot");
+        while (true) {
+            UIUtil.clrscr();
             System.out.println(line);
-            UIUtil.printTextAlign(line, "You must have to login before view order history!");
-            System.out.println(line);
-
-            System.out.print("Enter any key to continue...");
-
-            sc.nextLine();
-            return;
+            UIUtil.printHeader(line);
+            if (!isLogin()) {
+                UIUtil.printTextAlign(line, "Error reprot");
+                System.out.println(line);
+                UIUtil.printTextAlign(line, "You must have to login before view order history!");
+                System.out.println(line);
+                System.out.print("Enter any key to continue...");
+                sc.nextLine();
+                return;
+            }
+            Account account = new Membership().getAccount();
+            orders = new OrderBL().getOrders(account.getAccountID());
+            showOrderList();
         }
-        Account account = new Membership().getAccount();
-        orders = new OrderBL().getOrders(account.getAccountID());
-        showOrderList();
     }
 
     private boolean isLogin() {
@@ -50,6 +50,9 @@ public class Vieworderhistory {
         String line = "--------------------------------------------------------------------------------";
         String separatorLine = "|------------------------------------------------------------------------------|";
         while (true) {
+            UIUtil.clrscr();
+            System.out.println(line);
+            UIUtil.printHeader(line);
             UIUtil.printTextAlign(line, "Order");
             System.out.println(separatorLine);
             if (orders.size() < 1) {
@@ -72,16 +75,25 @@ public class Vieworderhistory {
         }
     }
 
-    int handleOrderDetail() {
+    int handleOrderDetail() throws Exception {
         int orderID;
+        String orderIDInput = "";
         while (true) {
-            int orderIDInput = Util.getIntegerNumber("Enter order id to view : ");
-            if (isExistOrderID(orderIDInput)) {
-                orderID = orderIDInput;
-                break;
+            System.out.print("Enter order id (q to quit) : ");
+            try {
+                orderIDInput = sc.nextLine();
+                orderID = Integer.parseInt(orderIDInput);
+                if (isExistOrderID(orderID)) {
+                    break;
+                }
+                System.out.println("Order id not found!");
+            } catch (Exception e) {
+                if (orderIDInput.equalsIgnoreCase("q")) {
+                    OrderMenu.displayOrderMenu();
+                }
+                System.out.println("Wrong input!");
+                continue;
             }
-            System.out.println("Order id not found!");
-
         }
         return orderID;
     }
