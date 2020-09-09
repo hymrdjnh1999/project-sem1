@@ -122,35 +122,35 @@ CREATE TABLE gameOption (
 
 -- insert accounts
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus)
-VALUES (1, 'Voibenho', '83422503bcfc01d303030e8a7cc80efc', 'Do', 'Dinh', '1999-06-21', 'Hung Yen', '0984869201', '200000', 'dinhdt.nde19026@vtc.edu.vn', 'Admin','2020-03-01', 'non-active');
+VALUES (1, 'Voibenho', '83422503bcfc01d303030e8a7cc80efc', 'Do', 'Dinh', '1999-06-21', 'Hung Yen', '0984869201', '0', 'dinhdt.nde19026@vtc.edu.vn', 'Customer','2020-03-01', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus)
-VALUES (2, 'Phuongrhyder01', '83422503bcfc01d303030e8a7cc80efc', 'Tran', 'Phuong', '2001-03-18', 'Ha Noi', '0378709602', '500000', 'phuongtt.nde19073@vtc.edu.vn', 'Admin','2020-03-05', 'non-active');
+VALUES (2, 'Phuongrhyder01', '83422503bcfc01d303030e8a7cc80efc', 'Tran', 'Phuong', '2001-03-18', 'Ha Noi', '0378709602', '0', 'phuongtt.nde19073@vtc.edu.vn', 'Customer','2020-03-05', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus)
-VALUES (3, 'LoiBelyBoi01', '83422503bcfc01d303030e8a7cc80efc', 'Tran', 'Loi', '2001-02-14', 'Ha Noi', '0325810316', '1200000', 'loitd.nde19072@vtc.edu.vn', 'Customer','2020-04-08', 'non-active');
+VALUES (3, 'LoiBelyBoi01', '83422503bcfc01d303030e8a7cc80efc', 'Tran', 'Loi', '2001-02-14', 'Ha Noi', '0325810316', '0', 'loitd.nde19072@vtc.edu.vn', 'Customer','2020-04-08', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus)
-VALUES (4, 'Thanh96', '83422503bcfc01d303030e8a7cc80efc', 'Vu', 'Thanh', '1996-01-05', 'Ha Noi', '0974294028', '250000', 'thanhvv.nde19052@vtc.edu.vn', 'Customer','2020-04-02', 'non-active');
+VALUES (4, 'Thanh96', '83422503bcfc01d303030e8a7cc80efc', 'Vu', 'Thanh', '1996-01-05', 'Ha Noi', '0974294028', '0', 'thanhvv.nde19052@vtc.edu.vn', 'Customer','2020-04-02', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus)
-VALUES (5, 'Minhptzzz', '83422503bcfc01d303030e8a7cc80efc', 'Le', 'Minh', '1998-11-09', 'Da Nang', '0352984165', '800000', 'Leminhzzz@gmail.com', 'Customer','2020-04-09', 'non-active');
+VALUES (5, 'Minhptzzz', '83422503bcfc01d303030e8a7cc80efc', 'Le', 'Minh', '1998-11-09', 'Da Nang', '0352984165', '0', 'Leminhzzz@gmail.com', 'Customer','2020-04-09', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus)
-VALUES (6, 'Huenguyen', '83422503bcfc01d303030e8a7cc80efc', 'Nguyen', 'Hue', '2001-06-12', 'Khanh Hoa', '0952617487', '120000', 'Huenguyen1206@gmail.com', 'Customer','2020-03-18', 'non-active');
+VALUES (6, 'Huenguyen', '83422503bcfc01d303030e8a7cc80efc', 'Nguyen', 'Hue', '2001-06-12', 'Khanh Hoa', '0952617487', '0', 'Huenguyen1206@gmail.com', 'Customer','2020-03-18', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus)
-VALUES (7, 'Manhnx', '83422503bcfc01d303030e8a7cc80efc', 'Xuan', 'Manh', '2001-06-08', 'Hai Duong', '0952617486', '1200000', 'Manhnc2001@gmail.com', 'Customer','2020-03-11', 'non-active');
+VALUES (7, 'Manhnx', '83422503bcfc01d303030e8a7cc80efc', 'Xuan', 'Manh', '2001-06-08', 'Hai Duong', '0952617486', '0', 'Manhnc2001@gmail.com', 'Customer','2020-03-11', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus)
-VALUES (8, 'tiendatoxy', '83422503bcfc01d303030e8a7cc80efc', 'Tien', 'Dat', '1998-05-26', 'Phu Tho', '0952657487', '750000', 'Tiendatoxyyy@gmail.com', 'Admin','2020-04-15', 'non-active');
+VALUES (8, 'tiendatoxy', '83422503bcfc01d303030e8a7cc80efc', 'Tien', 'Dat', '1998-05-26', 'Phu Tho', '0952657487', '0', 'Tiendatoxyyy@gmail.com', 'Customer','2020-04-15', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus)
-VALUES (9, 'Chungnhomkinh', '83422503bcfc01d303030e8a7cc80efc', 'Le', 'Chung', '1992-01-01', 'Thanh Hoa', '0978608686', '235000', 'Lesychung1992@gmail.com', 'Admin','2020-04-26', 'non-active');
+VALUES (9, 'Chungnhomkinh', '83422503bcfc01d303030e8a7cc80efc', 'Le', 'Chung', '1992-01-01', 'Thanh Hoa', '0978608686', '0', 'Lesychung1992@gmail.com', 'Customer','2020-04-26', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus)
-VALUES (10, 'QuanhVu', '83422503bcfc01d303030e8a7cc80efc', 'Vu', 'Quynh Anh', '2002-03-17', 'Cao Bang', '0985236147', '208000', 'Vuquynhanh1703@gmail.com', 'Customer','2020-04-16', 'non-active');
+VALUES (10, 'QuanhVu', '83422503bcfc01d303030e8a7cc80efc', 'Vu', 'Quynh Anh', '2002-03-17', 'Cao Bang', '0985236147', '0', 'Vuquynhanh1703@gmail.com', 'Customer','2020-04-16', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus) 
-VALUES ('11', 'VuVan', '83422503bcfc01d303030e8a7cc80efc', 'Vu', 'Van', '2001-06-17', 'Thach That', '0352948154', '200000', 'Vuvan1706@gmail.com', 'Customer', '2020-04-26', 'non-active');
+VALUES ('11', 'VuVan', '83422503bcfc01d303030e8a7cc80efc', 'Vu', 'Van', '2001-06-17', 'Thach That', '0352948154', '0', 'Vuvan1706@gmail.com', 'Customer', '2020-04-26', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus) 
-VALUES ('12', 'TranMinh', '83422503bcfc01d303030e8a7cc80efc', 'Minh', 'Tran', '1998-08-28', 'Phu Tho', '0395842657', '250000', 'Minhtran000@gmail.com', 'Customer', '2020-04-01', 'non-active');
+VALUES ('12', 'TranMinh', '83422503bcfc01d303030e8a7cc80efc', 'Minh', 'Tran', '1998-08-28', 'Phu Tho', '0395842657', '0', 'Minhtran000@gmail.com', 'Customer', '2020-04-01', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus) 
-VALUES ('13', 'MinhQuang', '83422503bcfc01d303030e8a7cc80efc', 'Minh', 'Quang', '1999-12-25', 'Ha Noi', '0385962145', '1500000', 'minhquang99@gmail.com', 'Customer', '2020-03-13', 'non-active');
+VALUES ('13', 'MinhQuang', '83422503bcfc01d303030e8a7cc80efc', 'Minh', 'Quang', '1999-12-25', 'Ha Noi', '0385962145', '0', 'minhquang99@gmail.com', 'Customer', '2020-03-13', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus) 
-VALUES ('14', 'MyMy', '83422503bcfc01d303030e8a7cc80efc', 'My', 'My', '1997-08-26', 'Da Nang', '0352184479', '2000000', 'mymyhihi@gmail.com', 'Customer', '2020-03-12', 'non-active');
+VALUES ('14', 'MyMy', '83422503bcfc01d303030e8a7cc80efc', 'My', 'My', '1997-08-26', 'Da Nang', '0352184479', '0', 'mymyhihi@gmail.com', 'Customer', '2020-03-12', 'non-active');
 INSERT INTO accounts(accountID, userName, pass, firstName, lastName, birthday, address, phone, money, mail, position, createDATE, accountStatus) 
-VALUES ('15', 'HongMinh', '83422503bcfc01d303030e8a7cc80efc', 'Hong', 'Minh', '1992-07-28', 'Khanh Hoa', '0352168594', '1000000', 'hongminhtt@gmail.com', 'Customet', '2020-03-28', 'non-active');
+VALUES ('15', 'HongMinh', '83422503bcfc01d303030e8a7cc80efc', 'Hong', 'Minh', '1992-07-28', 'Khanh Hoa', '0352168594', '0', 'hongminhtt@gmail.com', 'Customer', '2020-03-28', 'non-active');
 
 
 -- insert category

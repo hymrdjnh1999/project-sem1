@@ -3,7 +3,6 @@ package vtc.ui.order;
 import java.util.List;
 import java.util.Scanner;
 
-
 import vtc.bl.GameBL;
 import vtc.bl.OrderBL;
 import vtc.persistances.Account;
@@ -60,7 +59,7 @@ public class Vieworderhistory {
                 System.out.println(line);
                 System.out.print("Enter any key to back...");
                 sc.nextLine();
-                return; // return to Order Menu
+                OrderMenu.displayOrderMenu();
             }
             for (Order order : orders) {
                 int gameID = order.getGameID();
@@ -87,6 +86,7 @@ public class Vieworderhistory {
                     break;
                 }
                 System.out.println("Order id not found!");
+
             } catch (Exception e) {
                 if (orderIDInput.equalsIgnoreCase("q")) {
                     OrderMenu.displayOrderMenu();
