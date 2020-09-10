@@ -19,7 +19,7 @@ public class OrderDAL {
             cas.setDouble(3, order.getTotalBill());
             cas.setString(4, order.getOrderStatus());
             cas.execute();
-            con.close();
+            DbUtil.closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -35,7 +35,7 @@ public class OrderDAL {
             if (rs.next()) {
                 order = getOrder(rs);
             }
-            con.close();
+            DbUtil.closeConnection();
         } catch (Exception e) {
         }
         return order;
@@ -50,7 +50,7 @@ public class OrderDAL {
             while (rs.next()) {
                 orders.add(getOrder(rs));
             }
-            con.close();
+            DbUtil.closeConnection();
         } catch (Exception e) {
         }
         return orders;

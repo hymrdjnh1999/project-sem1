@@ -21,7 +21,7 @@ public class GameDAL {
             while (resultSet.next()) {
                 gameList.add(getGame(resultSet));
             }
-            connection.close();
+            DbUtil.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -38,7 +38,7 @@ public class GameDAL {
             while (resultSet.next()) {
                 pages++;
             }
-            connection.close();
+            DbUtil.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -56,7 +56,7 @@ public class GameDAL {
             while (resultSet.next()) {
                 pages++;
             }
-            connection.close();
+            DbUtil.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class GameDAL {
             if (resultSet.next()) {
                 game = getGame(resultSet);
             }
-            connection.close();
+            DbUtil.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -92,7 +92,7 @@ public class GameDAL {
             while (resultSet.next()) {
                 downloadTimes = resultSet.getInt("timesBought");
             }
-            connection.close();
+            DbUtil.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -104,7 +104,7 @@ public class GameDAL {
         try (Connection con = DbUtil.getConnection(); CallableStatement cas = con.prepareCall(sql);) {
             cas.setInt(1, gameID);
             cas.execute();
-            con.close();
+            DbUtil.closeConnection();
         } catch (Exception e) {
         }
     }
@@ -121,7 +121,7 @@ public class GameDAL {
             while (resultSet.next()) {
                 gameList.add(getGame(resultSet));
             }
-            connection.close();
+            DbUtil.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -137,7 +137,7 @@ public class GameDAL {
             cas.setInt(2, accountID);
             ResultSet rs = cas.executeQuery();
             if (rs.next()) {
-                connection.close();
+                DbUtil.closeConnection();
                 return true;
             }
         } catch (Exception e) {
