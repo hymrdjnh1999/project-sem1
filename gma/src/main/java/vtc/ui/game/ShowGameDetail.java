@@ -29,7 +29,7 @@ public class ShowGameDetail {
         game = gameList.get(gameIndex - 1);
         String line = "-------------------------------------------------------------------";
 
-        String star = "★          ";
+        String star = "           ";
 
         while (true) {
             Double downloadTimes = (double) new GameBL().getDownloadTimes(game.getGameID());
@@ -38,7 +38,7 @@ public class ShowGameDetail {
             String gamePrice = BuyGame.checkGameIsBought(game);
             boolean isGameBought = new GameBL().isGameBought(game.getGameID(), new Membership().getAccount());
             if (!isGameBought) {
-                gamePrice = "Install " + gamePrice;
+                gamePrice = "Price " + gamePrice;
             }
             UIUtil.clrscr();
             System.out.println(line);
@@ -47,7 +47,7 @@ public class ShowGameDetail {
             System.out.println(line);
             UIUtil.printTextAlign(line, "");
             UIUtil.printTextAlign(line, game.getGameName());
-            UIUtil.printTextAlign(line, "Supplier " + game.getSupplierName());
+            UIUtil.printTextAlign(line, "Supplier " + game.getPublisher());
             UIUtil.printTextAlign(line, "Game Kind " + game.getGameType());
             UIUtil.printTextAlign(line, "");
             System.out.println(line);

@@ -21,12 +21,12 @@ public class ShowGame {
         sendNotFoundGameReport(gameList);
 
         for (Game game : gameList) {
-            
-            System.out.printf("| %-2d %-60s |\n", i, game.getGameName());
-            System.out.printf("| %-2s %-60s |\n", "", game.getSupplierName());
-            System.out.printf("| %-2s %-60s |\n", "", game.getGameType());
-            String gameFooter = game.getVoteRate().toString() + "★  " + game.getGameSize() + "B "
-                    + BuyGame.checkGameIsBought(game);
+
+            System.out.printf("| %-2d %-60s |\n", i, "Name: " + game.getGameName());
+            System.out.printf("| %-2s %-60s |\n", "", "Publisher: " + game.getPublisher());
+            System.out.printf("| %-2s %-60s |\n", "", "Category: " + game.getGameType());
+            String gameFooter = "Rating : " + game.getVoteRate().toString() + " Size : " + game.getGameSize()
+                    + "B Price: " + BuyGame.checkGameIsBought(game);
             System.out.printf("| %-2s %-60s |\n", "", gameFooter);
             i++;
             System.out.println(dashLine);

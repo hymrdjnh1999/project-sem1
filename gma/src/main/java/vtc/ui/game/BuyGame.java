@@ -72,7 +72,7 @@ public class BuyGame {
         sc.nextLine();
     }
 
-    public  void showOrderDetail(Order order) throws Exception {
+    public void showOrderDetail(Order order) throws Exception {
         Account account = new Membership().getAccount();
         Game game = new GameBL().getGameByID(order.getGameID());
         Date now = new Date();
@@ -92,7 +92,7 @@ public class BuyGame {
         UIUtil.printTextNormal(line, "Game name : " + game.getGameName());
         String gamePrice = UIUtil.separatorNumber(game.getGamePrice()) + " VND";
         UIUtil.printTextNormal(line, "Price : " + gamePrice);
-        UIUtil.printTextNormal(line, "Supplier : " + game.getSupplierName());
+        UIUtil.printTextNormal(line, "Supplier : " + game.getPublisher());
         System.out.println(separatorLine);
         UIUtil.printTextNormal(line, "Total bill : " + gamePrice);
         UIUtil.printTextNormal(line, "Order status : Paid ");
@@ -106,7 +106,7 @@ public class BuyGame {
         int gameID = game.getGameID();
         boolean isGameBought = gameBL.isGameBought(gameID, new Membership().getAccount());
         if (isGameBought) {
-            return "Installed";
+            return "Bought";
         }
         return UIUtil.getGamePrice(game);
     }

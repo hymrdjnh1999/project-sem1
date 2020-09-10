@@ -68,9 +68,10 @@ public class UIUtil {
 
     public static void printHeader(String line) {
 
-        String content = "[Game Market Application] Group 1 - PF10";
-        printTextAlign(line, content);
-        printTextAlign(line, "Version : 0.1");
+        String nameSystem = "[Game Market Application]";
+        String groupName = "Group 1 - PF10 Version : 0.1";
+        printTextAlign(line, nameSystem);
+        printTextAlign(line, groupName);
     }
 
     public static int getPositionMidLine(String line, String content) {

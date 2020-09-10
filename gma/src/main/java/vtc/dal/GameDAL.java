@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 import vtc.persistances.Game;
 
 public class GameDAL {
@@ -23,6 +25,7 @@ public class GameDAL {
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            new Scanner(System.in).nextLine();
         }
         return gameList;
     }
@@ -120,7 +123,7 @@ public class GameDAL {
             game.setGameName(resultSet.getString("gameName"));
             game.setGameDownloadTimes(resultSet.getInt("gameDownloadTimes"));
             game.setVoteRate(resultSet.getFloat("rating"));
-            game.setSupplierName(resultSet.getString("supplierName"));
+            game.setPublisher(resultSet.getString("publisherName"));
             game.setGameType(resultSet.getString("gametype"));
         } catch (SQLException e) {
             e.printStackTrace();

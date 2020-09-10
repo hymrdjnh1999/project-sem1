@@ -9,7 +9,7 @@ public class Game {
     String gameDescription;
     Double gamePrice;
     Integer gameDownloadTimes;
-    String supplierName;
+    String publisher;
     Float voteRate;
     String gameSize;
     String gameType;
@@ -43,8 +43,8 @@ public class Game {
         return gameDownloadTimes;
     }
 
-    public String getSupplierName() {
-        return supplierName;
+    public String getPublisher() {
+        return publisher;
     }
 
     public String getGameType() {
@@ -79,8 +79,8 @@ public class Game {
         this.gameDownloadTimes = gameDownloadTimes;
     }
 
-    public void setSupplierName(String supplierName) {
-        this.supplierName = supplierName;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
     public void setVoteRate(Float voteRate) {
