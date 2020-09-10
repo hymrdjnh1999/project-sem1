@@ -15,7 +15,6 @@ import vtc.ui.MainMenu;
 public class Membership {
     static Scanner sc = new Scanner(System.in);
     private static Account account = new Account();
-   
 
     public Account getAccount() {
 
@@ -23,11 +22,10 @@ public class Membership {
     }
 
     public void displayMembershipMenu() throws Exception {
-        UIUtil.clrscr();
 
         String dashLine = "=====================================================";
         while (true) {
-
+            UIUtil.clrscr();
             System.out.println(dashLine);
             UIUtil.printHeader(dashLine);
             UIUtil.printTextAlign(dashLine, "Membership and profile");
@@ -51,8 +49,8 @@ public class Membership {
                 displayProfileInfo();
                 break;
             case "2":
-                UIUtil.clrscr();
-                RechargeMoney.rechargeMoney(account);
+                new RechargeMoney().rechargeMoney(account);
+                UIUtil.backMembershipMenu();
                 break;
             case "0":
                 MainMenu.mainMenu();
@@ -79,7 +77,7 @@ public class Membership {
             System.out.println(line);
             enterAccount();
         }
-      
+
     }
 
     private void enterAccount() throws Exception {
@@ -91,7 +89,7 @@ public class Membership {
             if (authentication(username, password)) {
                 account = new AccountBL().getAccount(username);
                 sendLoginSuccessfullyReport();
-                return; // return to menu Membership
+                return; // return to current menu
             }
         }
 

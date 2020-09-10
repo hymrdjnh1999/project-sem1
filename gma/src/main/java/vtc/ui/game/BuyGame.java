@@ -13,6 +13,7 @@ import vtc.persistances.Game;
 import vtc.persistances.Order;
 import vtc.ui.UIUtil;
 import vtc.ui.membership.Membership;
+import vtc.ui.membership.RechargeMoney;
 
 public class BuyGame {
     static Scanner sc = new Scanner(System.in);
@@ -20,13 +21,14 @@ public class BuyGame {
     Game game;
 
     public void verify(Game game) throws Exception {
+
         this.game = game;
         String line = "---------------------------------------------------------------------";
         while (true) {
-
+            Account account = new Membership().getAccount();
             String content = "[Do you want get ] : " + game.getGameName() + " with " + UIUtil.getGamePrice(game)
                     + " (y/n)? ";
-            Account account = new Membership().getAccount();
+
             UIUtil.clrscr();
             System.out.println(line);
             UIUtil.printHeader(line);
@@ -39,7 +41,7 @@ public class BuyGame {
                     return;// has bought game and return current game detail
                 }
                 // throw new Exception("Have to login before buy game!");
-                continue;// continue check out buy game
+                continue;// continue check out buy game if user has not bought game
             }
             String verify = Util.getYesNo(content);
             if (verify.equalsIgnoreCase("n")) {
@@ -47,7 +49,9 @@ public class BuyGame {
             }
             if (!checkBalance(game, account)) {
                 reportHaveNotEnoughMoney(line);
-                return; // return to current game detail
+                System.out.print("Enter any key to continue buy game...");
+                sc.nextLine();
+                continue;
             }
             new AccountBL().subtractMoney(this.game, account.getUserName());
             new GameBL().increaseDownloadTimes(game.getGameID());
@@ -59,7 +63,7 @@ public class BuyGame {
         }
     }
 
-    void reportHaveNotEnoughMoney(String line) {
+    void reportHaveNotEnoughMoney(String line) throws Exception {
         UIUtil.clrscr();
         System.out.println(line);
         UIUtil.printHeader(line);
@@ -68,8 +72,10 @@ public class BuyGame {
         UIUtil.printTextAlign(line, "You have not enough money!");
         UIUtil.printTextAlign(line, "Please recharge money before buy game");
         System.out.println(line);
-        System.out.print("Enter any key to back...");
+        System.out.print("Enter any key to recharge money...");
         sc.nextLine();
+        new RechargeMoney().rechargeMoney(new Membership().getAccount());
+
     }
 
     public void reportNotLogin(String line) throws Exception {

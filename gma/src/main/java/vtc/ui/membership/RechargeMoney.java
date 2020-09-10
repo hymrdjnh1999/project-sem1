@@ -12,15 +12,35 @@ public class RechargeMoney {
     private static Account account = new Account();
     private static AccountBL accountBL = new AccountBL();
 
-    protected static void rechargeMoney(Account _account) throws Exception {
-
+    public void rechargeMoney(Account _account) throws Exception {
+        Double money = 0d;
         account = _account;
+        UIUtil.clrscr();
+        displayBalanceInfo();
         while (true) {
-            displayBalanceInfo();
-            Double money = enterMoney();
-            checkOutRechargeMoney(money);
+            System.out.print("Enter money(q : quit) : ");
+            String input = sc.nextLine();
+
+            try {
+                money = Double.parseDouble(input);
+                if (!isRangeMoneyValid(input)) {
+                    System.out.println("Money is can not less than 10.000 and large than 10.000.000 each recharge!");
+                    continue;
+                }
+                break;// go to check out recharge money
+            } catch (Exception e) {
+                if (input.equalsIgnoreCase("q")) {
+                    return;
+                }
+                if (Util.isEmptyString(input)) {
+                    System.out.println("Please do not let input empty!");
+                    continue;
+                }
+                System.out.println("Do not have your input in these options");
+            }
 
         }
+        checkOutRechargeMoney(money);
 
     }
 
@@ -35,7 +55,7 @@ public class RechargeMoney {
                 .getYesNo("Do you want recharge [" + UIUtil.separatorNumber(money) + "] VND to your wallet?(y/n) : ");
         if (yn.equalsIgnoreCase("y")) {
             sendRechargeReport(money);
-            UIUtil.backMembershipMenu();
+           
         }
         return;
     }
@@ -74,40 +94,6 @@ public class RechargeMoney {
         System.out.println(line);
     }
 
-    private static Double enterMoney() throws Exception {
-        Double money = 0d;
-
-        while (true) {
-            System.out.print("Enter money(q : quit) : ");
-            String input = sc.nextLine();
-            if (!isValidMoney(input)) {
-                System.out.println("Wrong data type input. Please re-enter");
-                continue;
-            }
-
-            if (!isRangeMoneyValid(input)) {
-                System.out.println("Money is can not less than 10.000 and large than 10.000.000 each recharge!");
-                continue;
-            }
-            money = Double.parseDouble(input);
-            break;
-        }
-
-        return money;
-    }
-
-    public static boolean isValidMoney(String input) throws Exception {
-
-        if (!isMoney(input)) {
-            return false;
-        }
-        if (vtc.Util.isEmptyString(input)) {
-            return false;
-        }
-
-        return true;
-    }
-
     public static boolean isRangeMoneyValid(String input) {
         double money = Double.parseDouble(input);
         double maxMoney = 10000000d;
@@ -118,15 +104,4 @@ public class RechargeMoney {
         return true;
     }
 
-    static boolean isMoney(String input) throws Exception {
-        try {
-            Double.parseDouble(input);
-        } catch (Exception e) {
-            if (UIUtil.isBack(input)) {
-                new Membership().displayMembershipMenu();
-            }
-            return false;
-        }
-        return true;
-    }
 }
