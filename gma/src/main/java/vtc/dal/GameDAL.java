@@ -82,7 +82,7 @@ public class GameDAL {
     }
 
     public int getDownloadTime(int gameID) {
-        String sql = "{call getDownloadTimes(?)}";
+        String sql = "{call getTimesBought(?)}";
         int downloadTimes = -1;
         try {
             Connection connection = DbUtil.getConnection();
@@ -90,7 +90,7 @@ public class GameDAL {
             callableStatement.setInt(1, gameID);
             ResultSet resultSet = callableStatement.executeQuery();
             while (resultSet.next()) {
-                downloadTimes = resultSet.getInt("gameDownloadTimes");
+                downloadTimes = resultSet.getInt("timesBought");
             }
             connection.close();
         } catch (SQLException e) {
@@ -100,7 +100,7 @@ public class GameDAL {
     }
 
     public void updateDownloadTimes(int gameID) {
-        String sql = "call updateTimesDownload(?);";
+        String sql = "call updateTimesBought(?);";
         try (Connection con = DbUtil.getConnection(); CallableStatement cas = con.prepareCall(sql);) {
             cas.setInt(1, gameID);
             cas.execute();
@@ -154,7 +154,7 @@ public class GameDAL {
             game.setGamePrice(resultSet.getDouble("gamePrice"));
             game.setGameSize(resultSet.getString("size"));
             game.setGameName(resultSet.getString("gameName"));
-            game.setGameDownloadTimes(resultSet.getInt("gameDownloadTimes"));
+            game.setTimesBought(resultSet.getInt("timesBought"));
             game.setVoteRate(resultSet.getFloat("rating"));
             game.setPublisher(resultSet.getString("publisherName"));
             game.setGameType(resultSet.getString("gametype"));

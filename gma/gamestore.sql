@@ -46,7 +46,7 @@ CREATE TABLE games (
     gameDescription TEXT NOT NULL,
     gamePrice DOUBLE NOT NULL,
     rating DOUBLE NOT NULL,
-    gameDownloadTimes INT NOT NULL,
+    timesBought INT NOT NULL,
     size VARCHAR(225) NOT NULL,
     gameStatus VARCHAR(225) NOT NULL,
     FOREIGN KEY (publisherID)
@@ -214,7 +214,7 @@ INSERT INTO publishers(publisherID, publisherName) VALUES (35, 'PeopleFun');
 
 
 -- Câu đố
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES (1, 1, 'Fishdom', 
 'Try challenging and fun match-3 gameplay with unique puzzles as you decorate aquariums to create cozy homes for lovely talking fish.
  Feed them, play with them, and watch them interact with each other. Hey, your finned friends are waiting for you, 
@@ -226,7 +226,7 @@ INSERT INTO options (optionID, optionName, resources)
 VALUES (2, 'Image','https://lh3.googleusercontent.com/Ax7yQpJ56CPxJdjA7pj_BshHpJV9Xf-qsedtPV8dCZUASq5f4pNQZuQWks4iX0InkjQ=w1536-h706-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (2, 1);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES (2, 2, 'DOP: Draw One Part', 
 'It will make you feel both like genius and talented artist.Take you time to think the puzzle over, then draw the solution. 
 Vast range of riddles to draw: from common daily things to famous cultural reference.', 
@@ -238,7 +238,7 @@ INSERT INTO options (optionID, optionName, resources)
 VALUES (4, 'Image','https://lh3.googleusercontent.com/G7h-eKPlTcsokuWnVBtSnDNyhULQ2P1kFc8wF3QdsRFx7XzlkipjhPxYblwKHtAJRqY=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (4, 2);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES (3, 3, 'Clue Hunter', 'With this addictive and hilarious game, you will have non stop fun inside trying to find out what happens next! Who knows, 
 you might even be compelled to make a video out of it for the internet! Are you detective enough? Find out now.', 
 '6000', '4.5', '1021500', '42M', 'active');
@@ -246,14 +246,14 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (5, 'Image','https://lh3.googleusercontent.com/s_kunqkNbzyDAD4-D5hAjbDjkEFA6A1sz9XUtywHq8_TX9LiAFQ9Z_rm9YvZPJA4OgDD=s180-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (5, 3);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(4, 4, 'Brain Out', 'The questions are extremely brain-damaging with shocking answers
 The challenge game is full of fun and upsets your imagination', '0', '4.8', '5120000', '54M', 'active');
 INSERT INTO options(optionID, optionName, resources) 
 VALUES (6, 'Image','https://lh3.googleusercontent.com/s_kunqkNbzyDAD4-D5hAjbDjkEFA6A1sz9XUtywHq8_TX9LiAFQ9Z_rm9YvZPJA4OgDD=s180-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (6, 4);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(5, 5, 'Hero Rescue', 'Join the hero rescue in today most unique rescue game. It is made for yourself, those who love brain hacking games and those who love adventure.
 What do you think your IQ is? It is the brain hacking puzzles in Hero Rescue that will give you the answer. 
 Train your intelligence with this puzzle game that will help develop your brain. 
@@ -263,14 +263,14 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (7, 'Image','https://lh3.googleusercontent.com/XwN9hPQby4PB3Ir8TiNlK-vYgDMFgSbSYrKwDDkPIvfQvb5wUkxCwgUoiOrCDNhJkA=s180-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (7, 5);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(6, 1, 'Brain Wash', 'Hey, friend, what’s up! It’s me – your crazy brain!  Let’s talk a bit, I’ve made a surprise for you… 
 If you are brave enough, ask yourself three simple questions:', '0', '4.2', '2516485', '84M', 'active'); 
 INSERT INTO options(optionID, optionName, resources) 
 VALUES (8, 'Image','https://lh3.googleusercontent.com/x-APduqO1sNCP1baG8RG7AMavEtTfZLbwhUM1n2anzwrhXUzmQwyiZOk44zVyOQNZUw=s180-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (8, 6);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(7, 1, 'Homescapes', 'Welcome to Homescapes! Help Austin the butler bring warmth and comfort back to his wonderful family mansion. 
 Come on in—adventures await you from the moment you walk in the door!', '0', '4.8', '21548754', '148M', 'active'); 
  INSERT INTO options(optionID, optionName, resources) 
@@ -280,7 +280,7 @@ INSERT INTO gameOptions(optionID, gameID) VALUES (9, 7);
 VALUES (10, 'Video','https://youtu.be/v8vr-IwAPPA');
 INSERT INTO gameOptions(optionID, gameID) VALUES (10, 7);
  
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(8, 3, 'Just Draw', 'People need your help! Pictures will be presented to you and it is up to you to use your creative wit to 
 find what the missing object is and draw it in the right spot! It’s about to rain and the poor guy has no shelter? Draw him an umbrella! 
 The girl is cold and shivering - time to sketch in a sun! Each level is a brain teaser that only the smartest can figure out. 
@@ -289,7 +289,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (11, 'Image','https://lh3.googleusercontent.com/fl3xO9BpfOYeW1bDDVbwd2ru7O6zGx9vj6oUUzfJWyd16LpSQ0yRcI4JVsMvLrFssTY=s180-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (11, 8);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(9, 3, 'Pull Him Out', 'The hunter begins his journey for treasure, but the puzzles in front of the hunter trapped him. 
 What you need to do is to draw the stick in the right order, so that the hunter can take the hidden treasure away safely.', 
 '0', '3.2', '2148576', '78M', 'active'); 
@@ -297,7 +297,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (12, 'Image','https://lh3.googleusercontent.com/Jy3h3bzsqsPhgG2ZnjDL7LwGmqYPCPngI6rJx0Q6Tf4bjdLqdlqavrI_NjeALseYsk4=s180-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (12, 9);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(10, 3, 'Mr Ninja - Slicey Puzzles','Sequel to the 2019 smash hit, Mr Bullet, Mr Ninja will be your next great puzzle obsession!
  Replace your gun toting ways and equip a sword in this slash and dash’em puzzle experience! Swipe away and slice down the enemy spies, 
  pirates, and zombies. This unique puzzle experience will test your creative thinking. 
@@ -308,7 +308,7 @@ VALUES (13, 'Image','https://lh3.googleusercontent.com/Jy3h3bzsqsPhgG2ZnjDL7LwGm
 INSERT INTO gameOptions(optionID, gameID) VALUES (13, 10);
 
 -- Chiến thuật 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(11, 7, 'Stick War: Stickman Battle Legacy 2020','Stick war - stickman battle legacy 2020: Stickman battle legacy 2020: Stick war game (stickman battle)
  genre action game revolves around extremely fierce battles of the stick army to redistribute the occupied territory. 
  Stickman Fighting Game (Stickman Fighting) is a good strategy game on the pc web now officially available on mobile mobile. 
@@ -318,14 +318,14 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (14, 'Image','https://lh3.googleusercontent.com/xnfN91B6uxoxbAO3Srl_zXdmaGoApQd-fcmfIE7dZUQDpCwmdojJMsirpFBZPaQvCwI=s180-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (14, 11);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(12, 8, 'Stick War: Legacy','One of the most popular and highest rated web games of all time is now available on mobile!',
  '0', '4.2', '10154896', '81M', 'active'); 
 INSERT INTO options(optionID, optionName, resources) 
 VALUES (15, 'Image','https://lh3.googleusercontent.com/sITxnGaUxYVzTDkVAjRSKM8JKehWTuseE4hF8937sWVattKHEAirl7uZw93gqad_fQg6=s180-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (15, 12);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(13, 6, 'Bloons TD 6','Get ready for a massive 3D tower defense game designed to give you hours and hours of the best strategy 
 gaming available. Craft your perfect defense from a combination of awesome monkey towers, upgrades, Heroes, and activated abilities, 
 then pop every last Bloon that comes your way!', 
@@ -337,7 +337,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (17, 'Video','https://www.youtube.com/embed/mZSY1PSIJ-E?');
 INSERT INTO gameOptions(optionID, gameID) VALUES (17, 13);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(14, 8, 'Plants vs. Zombies FREE','Get ready to soil your plants as a mob of fun-loving zombies is about to invade your home. 
 Use your arsenal of 49 zombie-zapping plants — peashooters, wall-nuts, cherry bombs and more — to mulchify 26 types of zombies before 
 they break down your door.', 
@@ -346,7 +346,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (18, 'Image','https://lh3.googleusercontent.com/Ze2zQvotGvXDe8yBHXzEXsom6UUe_xvPadoivBzniGzNA31lYWhUYpvUQBb2GFKtvTo=s180-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (18, 14);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(15, 8, 'Kingdom Rush FrONtiers - Tower Defense game',
 'Fight on forests, mountains, and wastelands, customizing your defensive strategy with different tower test and specializations! 
 Rain fire upon your enemies, summon reinforcements, command your troops, recruit elven warriors and face legendary monsters on 
@@ -360,7 +360,7 @@ VALUES (20, 'Video','https://youtu.be/ilshnhXtfKQ');
 INSERT INTO gameOptions(optionID, gameID) VALUES (20, 15);
 
 -- Dạng bảng
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(16, 11, 'Master Puzzle-Puzzle Classic mahjong shape',
 'The new Puzzle Master has a simple gameplay, addictive gameplay: just collect fruit jigsaw puzzles, butterflies (choose 3 of the same puzzle), 
 after all puzzle pieces are collected You will win! You will be shining in the Puzzle Master.', 
@@ -372,7 +372,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (22, 'Video','https://www.youtube.com/embed/EazNUWTcZAk?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (22, 16);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(17, 10, 'Chess',
 'As you know, Chess is one of the oldest strategic thinking disciplines in the world.
 Chess is a board game that requires logic to develop skills such as strategy, thinking, and visual memory.', 
@@ -384,7 +384,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (24, 'Video','https://youtu.be/60WKis7st5w');
 INSERT INTO gameOptions(optionID, gameID) VALUES (24, 17);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(18, 12, 'Coloring by Numbers - Free coloring book & puzzle game', 'Several coloring books and coloring puzzle games for everyone, 
 there are lots of free and cool coloring pages in this coloring book and new pictures to draw with numbers will be updated every day! 
 Dozens of coloring categories to choose from, such as animals, love, jigsaw, quotes, characters, flowers, mandalas and so on.', 
@@ -393,7 +393,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (25, 'Image','https://lh3.googleusercontent.com/SDM2OtiKT5bc76242_N1IibmmZVAq1hieDOP7rk-EJVL8dUBxqXMTqlHajHJUysTKw=s180-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (25, 18);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(19, 13, 'Happy Color - coloring game',
 'Happy Color is a coloring game for adults. There are lots of colorful and breathtaking images to color!', 
 '0', '4.3', '5582648', '55M', 'active'); 
@@ -401,7 +401,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (26, 'Image','https://lh3.googleusercontent.com/OKIUc3vQq9bemwOMHYURdp7sD2_arP63f11lHYwzfTM45pAVsQIdYjlZaaygkW5LP4U=s180-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (26, 19);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(20, 13, '1LINE - One line with one touch',
 'One Line with One Touch is a simple way to get some brain exercise every day. This is the best mind challenging game with simple rules. 
 Just try to connect all the points with only one touch.', 
@@ -414,7 +414,7 @@ VALUES (28, 'Image','https://lh3.googleusercontent.com/z0jhQIeRu7_j6TjpCiv8pf1UQ
 INSERT INTO gameOptions(optionID, gameID) VALUES (28, 20);
 
 -- Đố Vui
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(21, 14, 'Brain Test 2: Storytime Tips',
 'With over a million downloads, Brain Test: Trivia Quiz has redefined the concept of mobile gaming. Now welcome the fun quizzes and 
 fun tests in Brain Test 2! Brain hacking game.', 
@@ -426,7 +426,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (30, 'Video','https://www.youtube.com/embed/0B98zQAtUKI?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (30, 21);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(22, 14, 'Brain Test: Fun Puzzle Tips',
 'Brain Test is an extremely addictive puzzle game. Many tricky and funny puzzles are waiting for you. Your mind will be challenged and
  relaxed while playing this game. You can also solve these cunning puzzles with your family and friends. 
@@ -439,7 +439,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (32, 'Video','https://www.youtube.com/embed/AjhpwX6zNZE?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (32, 22);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(23, 15, 'Lightning Fast - Read Questions',
 'The game includes quiz questions, fun questions, knowledge questions ... carefully selected by the editor, without duplication. 
 The questions are easy but difficult, difficult but easy, it will bring you cheerful and cheerful laughs after studying, stressful work.', 
@@ -451,7 +451,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (34, 'Video','https://www.youtube.com/embed/flhvqVCxsoQ?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (34, 23);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(24, 15, 'Who Is Trieu Phu 2020 - Reading Questions',
 'Is an intellectual game, knowledge test based on the gameshow Ai La Trieu Phu on VTV3, 
 the sound game hosted by MC Lai Van Sam, reading questions and 4 The answer plan promises to give players the experience of sitting in 
@@ -464,7 +464,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (36, 'Video','https://www.youtube.com/embed/0YAXRWJBi4s?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (36, 24);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(25, 16, 'Trivia Crack (Ad free)',
 'An advanced step to the puzzle game, it is to answer the quiz questions fun general knowledge!
 Do you like playing games with your friends? Challenge friends and family to answer fun quiz questions together!
@@ -478,7 +478,7 @@ VALUES (38, 'Video','https://www.youtube.com/embed/RTv3oIv7NIk?ps=play&amp;vq=la
 INSERT INTO gameOptions(optionID, gameID) VALUES (38, 25);
 
 -- Đua xe
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(26, 2, 'Turbo Stars',
 'Race in awesome tracks with different obstacles.
 Face opponents and be the best of the best!', 
@@ -490,7 +490,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (40, 'Video','https://www.youtube.com/embed/vJaKby3Q_TY?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (40, 26);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(27, 8, 'Need for Speed™ Most Wanted',
 'It pushes the mobile platform to its utmost limits and doesn’t even break a sweat(Capsule Computers)
 Buckle up, hit the gas and hold on tight; you’re in for the ride of your life. Outrun cops, outsmart rivals – and outdrive your friends – in the most dangerous Need for Speed yet. Do you dare to be the Most Wanted?', 
@@ -502,7 +502,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (42, 'Video','https://www.youtube.com/embed/xhcJlcGuovU?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (42, 27);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(28, 17, 'Asphalt 9: Legends - Epic Car Action Racing game',
 'Asphalt 9: Legends features a top roster of real hypercars for you to drive that is unlike that found in any other game, 
 from renowned car manufacturers like Ferrari, Porsche, Lamborghini and W Motors. You’re free to pick the dream car you need and 
@@ -516,7 +516,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (44, 'Video','https://www.youtube.com/embed/VgCMOReW2zQ?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (44, 28);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(29, 16, 'Asphalt 8 Racing game - Drive, Drift at Real Speed',
 'Over 220 high-performance cars and bikes for you to drive and push beyond their limits.
 Top licensed manufacturers and models, such as the Lamborghini Veneno, Bugatti 16.4 Grand Sport Vitesse, Ferrari LaFerrari, McLaren P1, 
@@ -531,7 +531,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (46, 'Video','https://www.youtube.com/embed/TEuZZB_zSOw?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (46, 29);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(30, 16, 'Asphalt Nitro',
 'Drive licensed supercars like Ferrari LaFerrari or Lamborghini Veneno on beautiful, "falling apart" but hard to "beaten" roads and perform some of 
 the craziest performances on earth you can think of. ! Burn Nitro and be the first to finish!', 
@@ -544,7 +544,7 @@ VALUES (48, 'Video','https://www.youtube.com/embed/R2a20lFFfVs?ps=play&amp;vq=la
 INSERT INTO gameOptions(optionID, gameID) VALUES (48, 30);
 
 -- Giáo dục
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(31, 18, 'Baby Pandas World',
 'Welcome to Baby Panda World. Here, you can make food, manage your restaurant, become a fashion designer, adventure with dinosaurs and interact with them to make your own story!', 
 '0', '4.4', '5289500', '75M', 'non-active'); 
@@ -555,7 +555,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (50, 'Image','https://lh3.googleusercontent.com/U_qOEecryGe5nb3iBSEhO3ZINpTEWDu00T34mo6qgXZ6Z-Mg5fM5VPgBIhLBSXsNoik=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (50, 31);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(32, 18, 'Baby Panda: Oral Care',
 'Is becoming a dentist your dream job? Then dont miss this game! Come to Baby Panda Dental Clinic! Experience the work of a dentist, 
 managing a dental clinic to clean and care for small animals! Become a good dentist!', 
@@ -567,7 +567,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (52, 'Video','https://www.youtube.com/embed/EUmTebUdLf0?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (52, 32);
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(33, 18, 'Baby Pandas Supermarket',
 'Welcome to the largest supermarket in Panda Town! When When and Mom Panda have to go shopping at the supermarket! 
 Play with friends and family and help your favorite pandas go shopping in Baby Panda Supermarket!', 
@@ -579,7 +579,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (54, 'Video','https://www.youtube.com/embed/qfxFqeuYqrk?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (54, 33); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(34, 18, 'Little Panda: Princess Makeup',
 'Are you a fashion expert? Come to Little Panda Makeup Salon and show off your makeup talent! Design great style with beautiful makeup, 
 new hairstyles and outfits suitable for princesses. Help them shine at the party!', 
@@ -591,7 +591,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (56, 'Video','https://www.youtube.com/embed/HSaOTY2yl4A?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (56, 34);  
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(35, 18, 'Baby Panda Playhouse',
 'Welcome to Baby Panda Playhouse, where you can cook, toy, experience different careers, and enjoy Babybus cartoon songs.
 Explore the playhouse for more games!', 
@@ -604,7 +604,7 @@ VALUES (58, 'Video','https://www.youtube.com/embed/D1okDP7DHd0?ps=play&amp;vq=la
 INSERT INTO gameOptions(optionID, gameID) VALUES (58, 35);   
 
 -- Hành Động
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(36, 19, 'Scribble Rider',
 'Roll, Swim, Stick and Fly with the ultimate All-Terrain vehicle!', 
 '0', '4.5', '10458452', '76M', 'active');
@@ -615,7 +615,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (60, 'Image','https://lh3.googleusercontent.com/r6LyJE9agew_kgMLbmiqXVnWdDPzIP55Hv7TKd1GfoLhwNpFzdOVoWMGn6u1LLMKfXQ=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (60, 36);  
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(37, 19, 'Draw Joust!',
 'Build your ride, and joust it out with your opponent! Do you have what it takes to win the tourney?
 Axes, spears, cannons, swords, all sorts of weapons attachable to your cart
@@ -628,7 +628,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (62, 'Image','https://lh3.googleusercontent.com/VX7VBaLwn30NpqMp51zP2EVm50n7AhDPkaIC2XD83g5Uq_hXiLsX1ivON7RpuOQkPvF8=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (62, 37);  
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(38, 20, 'Ultimate Custom Night',
 'Welcome to the ultimate FNaF mashup, where you will once again be trapped alone in an office fending off killer animatronics! 
 Featuring 50 selectable animatronic characters spanning seven Five Nights at Freddy games, 
@@ -643,7 +643,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (64, 'Video','https://www.youtube.com/embed/bvINCphw6xc?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (64, 38);   
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(39, 20, 'Five Nights at Freddy',
 'Welcome to your new summer job at Freddy Fazbear Pizza, where kids and parents alike come for entertainment and food as far as the eye can 
 see! The main attraction is Freddy Fazbear, of course; and his two friends. They are animatronic robots, programmed to please the crowds! 
@@ -657,7 +657,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (66, 'Image','https://lh3.googleusercontent.com/lbMz9O0ps5OxeKYoZiRpQ6f-EITr-HXP4H6H9Hia6GsXf_LEiJR2Qw2zjPOoXdIk_YA=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (66, 39); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(40, 20, 'Five Nights at Freddy',
 'Welcome to Circus Baby Pizza World, where family fun and interactivity go beyond anything you seen at those other pizza places! 
 With cutting-edge animatronic entertainers that will knock your kids socks off, as well as customized pizza catering, 
@@ -671,7 +671,7 @@ VALUES (68, 'Image','https://lh3.googleusercontent.com/YKRhM90P91GBncsq8rYtzvahw
 INSERT INTO gameOptions(optionID, gameID) VALUES (68, 40);  
 
 -- Mô phỏng
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(41, 21, 'Tie Dye',
 'T-shirts, bikinis, beach bags... you name it! Show off your creative DIY art skills while customizing the Tie Dye clothes to your liking
 Get requests from clients and paint clothes to your desire. Being creative isn’t hard: first tie, then dye! 
@@ -684,7 +684,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (70, 'Image','https://lh3.googleusercontent.com/rgSrebfzdIVoYcTrLqP8Wjoe8S2248u8ciIx1pfhhCQaInwCfb5GKMYF8EXErClQy_8=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (70, 41);  
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(42, 21, 'ASMR Slicing',
 'This is the most satisfying ASMR kinetic sand simulator cutting game. It not just kinetic sand, there are multiple other awesome objects and shapes too! 
 You seen it in the ASMR videos and now you get to cut and slice and dice it yourself in this simulator!', 
@@ -696,7 +696,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (72, 'Video','https://www.youtube.com/embed/4EWWNZTAlpk?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (72, 42);  
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(43, 21, 'Soap Cutting - Satisfying ASMR',
 'The most satisfying ASMR soap cutting game for antistress. You seen it in the videos and now you get to slice, cut, 
 and shred some amazing soaps yourself while listening to relaxing sounds and getting a tingling ASMR sensation.', 
@@ -708,7 +708,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (74, 'Video','https://www.youtube.com/embed/2DGp8bCwfwM?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (74, 43);  
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(44, 21, 'JoJo Siwa - Live to Dance',
 'Hey Siwanatorz! Enter the colorful and sparkly world of JoJo Siwa, dress up like a fashion superstar, get that sparkly makeup on, 
 and get ready to dance your heart out. Design bows, live out your superstar dream on stage, and rise to the top with JoJo Siwa and BowBow!', 
@@ -720,7 +720,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (76, 'Video','https://www.youtube.com/embed/KP1bVW_MEY0?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (76, 44);  
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(45, 21, 'My Horse Stories',
 'Go from city girl to country gal, in My Horse Stories! Choose your pet horse and become a horse racing champion, in this horse story game! 
 Get ready for a summer of drama! Compete against your rival, and maybe even fall in love with your crush!', 
@@ -733,7 +733,7 @@ VALUES (78, 'Video','https://www.youtube.com/embed/sK8J3kU6X0s?ps=play&amp;vq=la
 INSERT INTO gameOptions(optionID, gameID) VALUES (78, 45); 
 
 -- Nhạc
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(46, 22, 'Tiles Hop: EDM Rush!',
 'Right now you can experience the extremely interesting music challenge with the music of Son Tung M-TP: Run Now, Lac Troi, 
 Yesterday Brother, This Place Has You ...
@@ -746,7 +746,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (80, 'Video','https://www.youtube.com/embed/3ma9wMrSTMI?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (80, 46); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(47, 22, 'Magic Tiles 3',
 'Swaying is not bad, swinging is to shake off sadness
 Shake your fingers practice right away with Magic Tiles 3 with 30 days to try the hottest songs on Magic Tiles 3 for FREE!', 
@@ -758,7 +758,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (82, 'Video','https://www.youtube.com/embed/J5iKqn2lDnE?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (82, 47); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(48, 22, 'Color Hop 3D - Music Game',
 'Color Hop 3D combines one-touch controlled gameplay with carefully selected EDMs for an experience like never before. 
 The trick here is to not let your ball jump over the bricks of the wrong color. Listen to the music beat and enjoy the melody, 
@@ -771,7 +771,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (84, 'Video','https://www.youtube.com/embed/Td-G0hpyV48?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (84, 48); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(49, 22, 'Hop Ball 3D',
 'It one of the music game was designed for Ball Lovers. You surely love this ball game at the first try.', 
 '100000', '4.2', '100000', '71M', 'active');
@@ -782,7 +782,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (86, 'Image','https://lh3.googleusercontent.com/szsdRH-HEqyV1z9zvHq7XK4BqViGhNBveruNwQ2JTYaNTzgkkdnghfJbexURcAe-i1Q=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (86, 49); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(50, 22, 'Dancing Road: Color Ball Run!',
 'Let’s dance hard with the colorful ball under the rolling sky challenging like solving puzzle
 Galaxy adventure to unlock new songs in the music box:.
@@ -796,7 +796,7 @@ VALUES (88, 'Image','https://lh3.googleusercontent.com/28NqHf1h5ys2RF-1qCQGQlJUW
 INSERT INTO gameOptions(optionID, gameID) VALUES (88, 50); 
 
 -- Nhập Vai
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(51, 23, 'Goddess MUA',
 'Goddess Buy is an MMORPG with a natural setting in love', 
 '0', '4.2', '502525', '97M', 'active');
@@ -807,7 +807,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (90, 'Video','https://www.youtube.com/embed/8b-1CmvBhHs?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (90, 51); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(52, 23, 'Jade Sword - Lien Hiep Truyen Ky - Phuong Hoang',
 'Experience RPG gameplay with breathtaking action!
 EX skills are fierce and lively! Call on your friends Striker to dominate the game!', 
@@ -819,7 +819,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (92, 'Image','https://lh3.googleusercontent.com/DI5LtN_4oMsrEwISN3TZk7E77kzHjRi8IHZC28lWxshLtiBOJK46nMphdvW03jp_RFo=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (92, 52); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(53, 23, 'Mucheon',
 'Welcome to the new sky!
 The game that Rainbow Jisook (a.k.a Gemduk) chose was a great one!', 
@@ -831,7 +831,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (94, 'Video','https://www.youtube.com/embed/YRgaDeBWPpo?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (94, 53); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(54, 24, 'Neo Monsters',
 'Neo Monsters is an addictive strategy RPG that features epic 4v4 battles between two teams of up to 16 monsters. 
 The unique turn-based battle system allows you to come up with powerful chain strategies by combining hundreds of abilities. 
@@ -845,7 +845,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (96, 'Image','https://lh3.googleusercontent.com/s46g5d1cgkHgRZU8bZUcggR_uhb5bSq2IcOHV0iLq9-k-5oo84GIFcfEtPNSeUgRGG8=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (96, 54); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(55, 24, 'Evertale',
 'Dive into a breathtaking fantasy world filled with mysterious monsters to capture, battle, and train. Explore sprawling landscapes, 
 bustling cities, and mythical dungeons in this expansive open-world RPG!', 
@@ -858,7 +858,7 @@ VALUES (98, 'Image','https://lh3.googleusercontent.com/t-DHYDW6_6SVQTT3ZaDYcVUcK
 INSERT INTO gameOptions(optionID, gameID) VALUES (98, 55); 
 
 -- Phiêu lưu
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(56, 25, 'FPS Commando Secret Mission - Free Game',
 'Welcome to the army FPS commando missions. You will meet all the terrorists as a specially trained military commando in the FPS 2020 shooting game.', 
 '0', '3.5', '10015896', '26M', 'active');
@@ -869,7 +869,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (100, 'Video','https://www.youtube.com/embed/EYlXAM56lGg?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (100, 56); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(57, 25, 'Anti Terrorist Shooter 2020: Free Game',
 'Hello Fans of free shooting games. Welcome to join the new action game.', 
 '0', '4.5', '1045896', '39M', 'active');
@@ -880,7 +880,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (102, 'Image','https://lh3.googleusercontent.com/iVwm73uHODfRBMgecip6DSRFU7VndpEg1OqhvG5-i2UsbbdcRTsOc7GR5xO5RyLpzng=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (102, 57); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(58, 25, 'Alien: Blackout',
 'The terror of Alien is brought to life in Alien: Blackout. Try to stay alive while trapped aboard a crippled Weyland-Yutani space station 
 carrying a deadly Xenomorph as it tirelessly hunts you and the crew. Outsmart the perfect hunter by making perilous choices. 
@@ -894,7 +894,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (104, 'Video','https://www.youtube.com/embed/qZIol5bMgBk?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (104, 58); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(59, 26, 'MARVEL Puzzle Quest: Join the Super Hero Battle!',
 'S.H.I.E.L.D. misappropriated powerful new resource Iso-8, Super Villain Norman Osborn took over the agency and replaced it 
 with H.A.M.M.E.R., power-hungry in The Dark Reign. Super Heroes and villains link together in this RPG game to end Norman Osborn rise and 
@@ -907,7 +907,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (106, 'Video','https://www.youtube.com/embed/KlodShEjUAY?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (106, 59); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(60, 26, 'Magic: Puzzle Quest',
 'Magic: The Gathering and the original Match 3 RPG are re-imagined in Magic: Puzzle Quest, an epic deck building, strategy and deep leveling role playing game!
 Kotaku says it “is a marriage of two distinct games into a unique new experience.”', 
@@ -920,7 +920,7 @@ VALUES (108, 'Video','https://www.youtube.com/embed/TEPcPVbuzW4?ps=play&amp;vq=l
 INSERT INTO gameOptions(optionID, gameID) VALUES (108, 60); 
 
 -- Sòng Bạc
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(61, 27, 'Super Blackjack 2',
 'BLACKJACK 2: THE BEST Blackjack GAMES ONLINE or OFFLINE! Play Las Vegas Casino Blackjack 21 with the Black Jack 21 FREE APP!
 The Best FREE blackjack card game app! Play LIVE tournaments online or offline!', 
@@ -932,7 +932,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (110, 'Video','https://www.youtube.com/embed/swTuPm9UQyc?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (110, 61); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(62, 27, 'Snipey 72',
 'This is a full application version of Pachi "Sunaipai 72". Auto Play, also set the device default function changes.
 Please experience the reality of the pachinko hall in your smartphone.', 
@@ -944,7 +944,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (112, 'Video','https://www.youtube.com/embed/W4-nWt9FtSk?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (112, 62); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(63, 28, 'Crock OGold Slots 3 ReSpin Party PAID',
 'With a HUGE VARIETY OF SLOTS and pokies, UNLIMITED FREE COINS and MULTI Minor, Major and Grand PROGRESSIVE JACKPOTS, 
 try to win as much cash as possible by also playing bonus features such as Roulette, Scratchcards, Higher or Lower Cards and 
@@ -957,7 +957,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (114, 'Video','https://www.youtube.com/embed/6XpP9wNcZW8?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (114, 63); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(64, 29, 'Crock OGold Slots 3 ReSpin Party FREE',
 'With a HUGE VARIETY OF SLOTS and pokies, UNLIMITED FREE COINS and MULTI Minor, Major and Grand PROGRESSIVE JACKPOTS, 
 try to win as much cash as possible by also playing bonus features such as Roulette, Scratchcards, Higher or Lower Cards and Lucky Dice 
@@ -970,7 +970,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (116, 'Video','https://www.youtube.com/embed/6XpP9wNcZW8?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (116, 64); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(65, 30, 'Crock OGold Rainbow Slots PAID',
 'With UNLIMITED FREE COINS try to win as much cash as possible by also playing features such as the Leprechaun Riches Bonus Feature, 
 Lucky Shamrock and Crock OGold mini-games to accumulate virtual credit prize bonuses.', 
@@ -983,7 +983,7 @@ VALUES (118, 'Image','https://lh3.googleusercontent.com/tLE9UBnN04DHRgaC4Xx6vRyy
 INSERT INTO gameOptions(optionID, gameID) VALUES (118, 65); 
 
 -- Thẻ Bài
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(66, 29, 'Solitales: game Solitaire Tripeaks cổ điển ở Vườn',
 'It a classic solitaire card game. Tripeaks, also known as Tri Towers, Triple Peaks or Three Peaks, are a few great examples of solitaire. 
 Or do you like Pyramid, Klondike or Spider Solitaire? Or Free Cell? It up to you to choose!', 
@@ -995,7 +995,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (120, 'Video','https://www.youtube.com/embed/moMeS8hqnjI?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (120, 66); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(67, 30, 'Tien Len',
 'Version up for free, no need to load coins anything.
 Going south can fight with the computer, extremely smart 4-player mode.
@@ -1010,7 +1010,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (122, 'Image','https://lh3.googleusercontent.com/qpH2T5IivoQ_yVBiA3-Qm6g2WbUkrAOloXNK3yAXiPToQLlt6JtZOwnJQgo0Xx2Z9A=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (122, 67); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(68, 30, 'Bai cao - Lieng',
 'Lieng has a simple way to play, easy to grasp. There is a play style similar to the high card of the South, which many people know and love.
  Simple gameplay, fast, attractive, but equally brain-weighted game, Bai Lieng game promises to become a favorite game.', 
@@ -1022,7 +1022,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (124, 'Video','https://www.youtube.com/embed/pJWSwwijGTo?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (124, 68); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(69, 30, 'Sam Loc',
 'I wish you all fun playing the game, and at the same time I remind you that I have other games such as: go ahead, coin, len mien nam, 
 four colors, gray gray, scratch cards, dozen lemons, phom, catte Dont forget.', 
@@ -1034,7 +1034,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (126, 'Image','https://lh3.googleusercontent.com/IpbMcmh0CmWONL1JWdLk2C9LOmn7K1dehyQUoMQEUIUsnXUNU5Tnvh-GhuoxhQOARAU=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (126, 69); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(70, 30, 'Phom - Ta La',
 'Phom Offline is a completely free version and does not need internet, wifi can still be played. Players can play Phom cards anytime and 
 anywhere without worrying about losing their lives or having to recharge the game.', 
@@ -1047,7 +1047,7 @@ VALUES (128, 'Image','https://lh3.googleusercontent.com/Y3AYsmZhoYKVQxXEJgMPrM9E
 INSERT INTO gameOptions(optionID, gameID) VALUES (128, 70); 
 
 -- Thể Thao
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(71, 31, 'Archery Club: PvP Multiplayer',
 'Archery Club is a multiplayer archery game with a variety of fun game styles and an extensive upgrade system. Become a master archer, 
 collect the best equipment, and win online against other opponents!', 
@@ -1059,7 +1059,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (130, 'Video','https://www.youtube.com/embed/qdDsFhtWBgw?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (130, 71); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(72, 32, 'Pooking - Billiards City',
 'Billiards City is a modern pool style game with single player, if you like a relaxing game of 8 balls, this is the game for you!', 
 '0', '4.8', '12516487', '41M', 'active');
@@ -1070,7 +1070,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (132, 'Video','https://www.youtube.com/embed/2GtT-ZNr_q4?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (132, 72); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(73, 32, 'Billiards Nation',
 'Play the best offline 8 Ball Billiard game on Android. No waiting for opponents. You do not need wifi. You play with the best 8 ball pool players. 
 You may become the best of pool players.', 
@@ -1082,7 +1082,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (134, 'Video','https://www.youtube.com/embed/2GtT-ZNr_q4?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (134, 73); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(74, 33, 'FIFA Online 4 M by EA SPORTS™',
 'FIFA Online 4 Vietnam officially released the phone version. From now on, you can fulfill the dream of grass field anytime, anywhere easily.
 FIFA Online 4 Vietnam has copyrighted over 32 tournaments and 15000 players worldwide. Building your dream team is now at your fingertips.', 
@@ -1094,7 +1094,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (136, 'Video','https://www.youtube.com/embed/g2fB58tzLYI?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (136, 74); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(75, 33, 'FIFA Online EA SPORTS™',
 'The data is completely synchronized with FIFA Online 4 on the computer to help manage the team, upgrade, buy and sell players in the transfer market and open items faster and more convenient than ever.
 World Tour mode only available on FIFA Online 4M will be the place for you to conquer the heights in the highest tournaments, along with the attractive rewards.', 
@@ -1107,7 +1107,7 @@ VALUES (138, 'Video','https://www.youtube.com/embed/JfDdYlDf_JA?ps=play&amp;vq=l
 INSERT INTO gameOptions(optionID, gameID) VALUES (138, 75); 
 
 -- Thông Thường
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(76, 1, 'Homescapes',
 'Welcome to Homescapes! Help Austin the butler bring warmth and comfort back to his wonderful familys mansion. 
 Come on in—adventures await you from the moment you walk in the door!', 
@@ -1119,7 +1119,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (140, 'Video','https://www.youtube.com/embed/v8vr-IwAPPA?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (140, 76); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(77, 1, 'Gardenscapes',
 'Embark on an adventurous journey: beat match-3 levels, restore and decorate different areas in the garden, get to the bottom of the secrets 
 it holds, and enjoy the company of amusing in-game characters, including Austin, your butler, and a funny dog! What are you waiting for? 
@@ -1132,7 +1132,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (142, 'Video','https://www.youtube.com/embed/oq7QxDh_b1c?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (142, 77); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(78, 3, 'Save The Girl',
 'The tricky and relaxing puzzle game you’ve been seeing all this time is finally a reality! Only the smartest will be able to solve 
 these brain teaser tests in order to save the girl from the villains chasing her! Each level will present you with a scenario that 
@@ -1146,7 +1146,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (144, 'Video','https://www.youtube.com/embed/SX4d9pP4xKQ?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (144, 78); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(79, 3, 'Fruit Clinic',
 'Prepare your tools and heal the fruits.
 Be careful, as an official fruit operator take your job seriously and let the fruits leave your clinic happy.
@@ -1159,7 +1159,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (146, 'Video','https://www.youtube.com/embed/eF9bcl8zW5k?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (146, 79); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(80, 1, 'Wildscapes',
 'Build spacious enclosures for animals and make your zoo visitor-friendly with cafes, fountains, playgrounds, hangout spots, and more! 
 Learn about species from all over the world and create the best zoo ever! Ready for a wild ride? Then hop on!', 
@@ -1172,7 +1172,7 @@ VALUES (148, 'Video','https://www.youtube.com/embed/AAnkLKIX5kU?ps=play&amp;vq=l
 INSERT INTO gameOptions(optionID, gameID) VALUES (148, 80); 
 
 -- Tìm ô chữ 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(81, 34, 'Scrabble® GO - New Word game',
 'Welcome to Scrabble GO, the new and updated version of the classic crossword game!', 
 '20000', '3.9', '10001500', '104M', 'active');
@@ -1183,7 +1183,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (150, 'Video','https://www.youtube.com/embed/85DTEe8GfZQ?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (150, 81); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(82, 34, 'ThanTai - Giai doithuong doan chu',
 'It is a game about guessing words through 4 pictures. One word in common among 4 visual goals is identifying words and filling in answers.', 
 '0', '3.2', '10568000', '52M', 'active');
@@ -1194,7 +1194,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (152, 'Video','https://www.youtube.com/embed/nUmwEJjxDjQ?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (152, 82); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(83, 34, 'Wordscapes Search',
 'Would you like to relax, exercise your brain, and expand your vocabulary-all at the same time? With Wordscapes Search , 
 the NEWEST game from the makers of Wordscapes, you can! These incredibly addicting word search puzzles are brain blasting fun! 
@@ -1208,7 +1208,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (154, 'Video','https://www.youtube.com/embed/53z_vpAu9is?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (154, 83); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(84, 34, 'Wordscapes',
 'This text twist of a word game is tremendous brain challenging fun. Enjoy modern word puzzles with the best of word searching, anagrams, 
 and crosswords!', 
@@ -1220,7 +1220,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (156, 'Video','https://www.youtube.com/embed/f_xqk8RMMsg?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (156, 84); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(85, 34, 'Word Stacks',
 'Would you like to relax, exercise your brain, and expand your vocabulary-all at the same time? With Word Stacks, 
 the brand NEW & incredibly addicting word game from the makers of Wordscapes, you can!', 
@@ -1233,7 +1233,7 @@ VALUES (158, 'Video','https://www.youtube.com/embed/VOWMBiYB9Jo?ps=play&amp;vq=l
 INSERT INTO gameOptions(optionID, gameID) VALUES (158, 85); 
 
 -- Trò chơi điện tử
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(86, 19, 'Looney Tunes™ World of Mayhem - Action RPG',
 'Join Bugs Bunny, Daffy Duck, Marvin the Martian and all the classic toons to build the greatest “Toon Team” in Looney Tunes™ World of Mayhem! 
 Collect cartoon characters like Tweety Bird, Taz, Road Runner and more to wage wacky battles in a vibrant Looney Tunes™ World.', 
@@ -1245,7 +1245,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (160, 'Image','https://lh3.googleusercontent.com/6I5YNUZtPGYT1e0kHF7Jv00-ieHPJdvkdr64rQueYONtN6YvszST-uGIoxEoPAFYS9U=w1536-h754-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (160, 86); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(87, 19, 'Tower Run',
 'Tap at the right time to make a tower of humans.', 
 '0', '3.4', '10015000', '90M', 'active');
@@ -1256,7 +1256,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (162, 'Image','https://lh3.googleusercontent.com/oMeSgLPCEok8ECwH9G36_RRJX8OxtgQXoSwHzBJKAwW5gn3_P0h5cnRA1tspvEjv0w2X=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (162, 87); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(88, 19, 'Good Slice',
 'Relax and cut the fruits to get it all to fall in the blender!', 
 '0', '3.8', '15641000', '90M', 'non-active');
@@ -1267,7 +1267,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (164, 'Image','https://lh3.googleusercontent.com/NRMjMyvOISF5psKCnTMkhHuvD29vwD7bu8sPv_Fpn29jl-OY8HCHipLhMSRHtBkw8yQA=w720-h310-rw');
 INSERT INTO gameOptions(optionID, gameID) VALUES (164, 88); 
 	
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(89, 19, 'Draw Climber',
 'Funniest race you ever played!, Draw your legs to win the race!, Any drawing will make you run!,
 When you are stuck you can draw another shape to pass!', 
@@ -1279,7 +1279,7 @@ INSERT INTO options(optionID, optionName, resources)
 VALUES (166, 'Video','https://www.youtube.com/embed/jTKLzZQyiCY?ps=play&amp;vq=large&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;authuser=0');
 INSERT INTO gameOptions(optionID, gameID) VALUES (166, 89); 
 
-INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, gameDownloadTimes, size, gameStatus)
+INSERT INTO games(gameID, publisherID, gameName, gameDescription, gamePrice, rating, timesBought, size, gameStatus)
 VALUES(90, 19, 'Hole.io',
 'Enter the arena and face the other holes in a fierce battle.
 Eat everything in sight with your black hole and expand it to eat more! Show them who is the biggest hole in town!', 
@@ -1393,8 +1393,11 @@ DELIMITER $$
 CREATE PROCEDURE getAllgames(IN sets INT)
 
 BEGIN
-SELECT g.gameName,g.gameID, s.publisherName,concat(substr(g.gameDescription,1,40),'')AS gameDescription,g.gamePrice,c.categoryName AS `gameType`,g.rating,g.gameDownloadTimes,g.size
- FROM games AS g INNER JOIN categoryDetails AS cd ON cd.gameID = g.gameID INNER JOIN categories AS c ON c.categoryID = cd.categoryID 
+SELECT g.gameName,g.gameID, s.publisherName,concat(substr(g.gameDescription,1,40),'')
+AS gameDescription,g.gamePrice,c.categoryName 
+AS `gameType`,g.rating,g.timesBought,g.size
+FROM games 
+AS g INNER JOIN categoryDetails AS cd ON cd.gameID = g.gameID INNER JOIN categories AS c ON c.categoryID = cd.categoryID 
  INNER JOIN publishers AS s ON g.publisherID = s.publisherID
 ORDER BY g.gamename
  LIMIT 6 OFFSET sets;
@@ -1402,10 +1405,10 @@ END; $$
 DELIMITER ;
 -- end getallgames
 DELIMITER $$
-CREATE PROCEDURE getDownloadTimes(IN gameID INT)
+CREATE PROCEDURE getTimesBought(IN gameID INT)
 
 BEGIN
-	SELECT g.gameDownloadTimes from games as g 
+	SELECT g.timesBought from games as g 
     WHERE g.gameID = gameID;
 END; $$
 DELIMITER ;
@@ -1423,7 +1426,7 @@ BEGIN
     g.gamePrice,
     c.categoryName AS `gameType`,
     g.rating,
-    g.gameDownloadTimes,
+    g.timesBought,
     g.size
 FROM
     games AS g
@@ -1518,11 +1521,11 @@ DELIMITER ;
 -- end buyGame
 
 DELIMITER $$
-CREATE PROCEDURE updateTimesDownload(IN  gameID int)
+CREATE PROCEDURE updateTimesBought(IN  gameID int)
 BEGIN
 	UPDATE games AS g 
 SET 
-    g.gameDownloadTimes = g.gameDownloadTimes + 1
+    g.timesBought = g.timesBought + 1
 WHERE
     g.gameID = gameID;
 END ; $$
@@ -1541,7 +1544,7 @@ BEGIN
     g.gamePrice,
     c.categoryName AS `gameType`,
     g.rating,
-    g.gameDownloadTimes,
+    g.timesBought,
     g.size
 FROM
     games AS g
