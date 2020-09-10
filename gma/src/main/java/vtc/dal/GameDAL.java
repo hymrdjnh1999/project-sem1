@@ -28,6 +28,41 @@ public class GameDAL {
         return gameList;
     }
 
+    public int getPages() {
+        String sql = "{call getPages()}";
+        int pages = 0;
+        try {
+            Connection connection = DbUtil.getConnection();
+            CallableStatement callableStatement = connection.prepareCall(sql);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                pages++;
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (int) Math.ceil(pages / 6.0);
+    }
+
+    public int getPagesBySearch(String gameName) {
+        String sql = "{call getPagesBySearch(?)}";
+        int pages = 0;
+        try {
+            Connection connection = DbUtil.getConnection();
+            CallableStatement callableStatement = connection.prepareCall(sql);
+            callableStatement.setString(1, gameName);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                pages++;
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (int) Math.ceil(pages / 6.0);
+    }
+
     public Game getGameByID(int gameID) {
         String sql = "{call getGameByID(?)}";
         Game game = new Game();

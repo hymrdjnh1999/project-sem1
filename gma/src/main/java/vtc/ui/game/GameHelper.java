@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import vtc.Util;
+import vtc.bl.GameBL;
 import vtc.persistances.Game;
 
 public class GameHelper {
@@ -11,58 +12,25 @@ public class GameHelper {
     private int offSet;
     private List<Game> gameList;
     private String viewType;
+    private static int currentPage = 1;
+    private GameBL gameBL = new GameBL();
+    private String searchContent;
 
     public GameHelper() {
 
     }
 
-    public GameHelper(int _offSet, List<Game> _gameList, String _viewType) {
+    public GameHelper(int _offSet, List<Game> _gameList, String _viewType, String searchContent) {
         this.offSet = _offSet;
         this.gameList = _gameList;
         this.viewType = _viewType;
-    }
-
-    private void pageNationOfSearch() throws Exception {
-        do {
-            System.out.print("Enter " + showReportSearch());
-            String theChoose = sc.nextLine();
-            if (offSet == 0 && gameList.size() == 0) {
-                backToGameMenu(theChoose);
-                continue;
-
-            }
-            if (offSet > 0 && gameList.size() > 0) {
-                midPage(theChoose);
-                continue;
-            }
-
-            if (offSet > 0 && gameList.size() == 0) {
-                lastPage(theChoose);
-                continue;
-            }
-
-            firstPage(theChoose);
-        } while (true);
-    }
-
-    private void backToGameMenu(String input) throws Exception {
-        if (input.equalsIgnoreCase("q")) {
-            GameMenu.displayGameMenu();
-        }
-        if (Util.isEmptyString(input)) {
-            System.out.println("Do not input empty!");
-            return;
-        }
-        System.out.println("Wrong input!");
-        return;
+        this.searchContent = searchContent;
     }
 
     public void pagiNation() throws Exception {
-        if (viewType.equalsIgnoreCase("search")) {
-            pageNationOfSearch();
-        }
         do {
             System.out.print("Enter " + showReport());
+
             String theChoose = sc.nextLine();
 
             if (offSet > 0 && gameList.size() > 0) {
@@ -89,12 +57,13 @@ public class GameHelper {
         if (input.equalsIgnoreCase("n")) {
             // throw new Exception("input is next!");
             offSet += 6;
+            currentPage += 1;
             new GameHandle().showGame(offSet, viewType);
-
         }
 
         if (input.equalsIgnoreCase("q")) {
             // throw new Exception("input is back!");
+            currentPage = 1;
             GameMenu.displayGameMenu();
         }
         checkInputIsGameIndex(input);
@@ -110,15 +79,18 @@ public class GameHelper {
         if (input.equalsIgnoreCase("p")) {
             // throw new Exception("input is back to previousPage!");
             offSet -= 6;
+            currentPage -= 1;
             new GameHandle().showGame(offSet, viewType);
         }
         if (input.equalsIgnoreCase("n")) {
             // throw new Exception("input is next!");
+            currentPage += 1;
             offSet += 6;
             new GameHandle().showGame(offSet, viewType);
         }
         if (input.equalsIgnoreCase("q")) {
             // throw new Exception("input is back!");
+            currentPage = 1;
             GameMenu.displayGameMenu();
         }
         checkInputIsGameIndex(input);
@@ -136,42 +108,37 @@ public class GameHelper {
         }
         if (input.equalsIgnoreCase("q")) {
             // throw new Exception("input is back!");
+            currentPage = 1;
             GameMenu.displayGameMenu();
         }
 
         // throw new Exception("input is back to previousPage!");
         offSet -= 6;
+        currentPage -= 1;
         new GameHandle().showGame(offSet, viewType);
 
     }
 
     private String showReport() {
         Integer size = gameList.size();
-        String index = "" + (offSet + 1) + " - " + (offSet + gameList.size());
-        if (offSet > 0 && size > 0) {
-            return "(N : next | P : previous | Index : " + index + " | Q : back) : ";
+        String content = "";
+        String showPagiNation = "| page : " + currentPage + "/" + gameBL.getNumberOfPage();
+        if (viewType.equalsIgnoreCase("search")) {
+            showPagiNation = "| page : " + currentPage + "/" + gameBL.getNumberOfPageBySearch(searchContent);
         }
-        if (size == 0 && offSet > 0) {
-            return "( P : previous | Q : quit) : ";
-        }
-
-        return "(N : next | Index :  " + index + " | Q : quit) : ";
-    }
-
-    private String showReportSearch() {
-        Integer size = gameList.size();
-        String index = "" + (offSet + 1) + " - " + (offSet + gameList.size());
         if (size == 0 && offSet == 0) {
-            return "Enter Q to quit : ";
+            content = "Enter Q to quit : ";
+            return content;
         }
         if (size == 0 && offSet > 0) {
             return "( P : previous | Q : quit) : ";
         }
         if (offSet > 0 && size > 0) {
-            return "(N : next | P : previous | Index : " + index + " | Q : quit) : ";
+            content = "(N : next | P : previous | Q : quit " + showPagiNation + " ) : ";
+            return content;
         }
-
-        return "(N : next | Index :  " + index + " | Q : quit) : ";
+        content = "(N : next | Q : quit " + showPagiNation + ") : ";
+        return content;
     }
 
     public void checkInputIsGameIndex(String input) throws Exception {
@@ -181,7 +148,7 @@ public class GameHelper {
         } catch (Exception e) {
             // throw new Exception("input is not one in options!");
             System.out.println("Your input is not one in these options!");
-            new GameHelper(offSet, gameList, viewType).pagiNation();// current pagination
+            new GameHelper(offSet, gameList, viewType, searchContent).pagiNation();// current pagination
 
         }
         int gameIndex = parseGameIndex(parseInt);
@@ -193,7 +160,7 @@ public class GameHelper {
         }
         // throw new Exception("Game index not found!");
         System.out.println("Game index not found!");
-        new GameHelper(offSet, gameList, viewType).pagiNation(); // current pagination
+        new GameHelper(offSet, gameList, viewType, searchContent).pagiNation(); // current pagination
 
     }
 

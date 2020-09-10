@@ -1557,7 +1557,21 @@ ORDER BY g.gamename
 END ; $$
 DELIMITER ;
 -- end searchGame
-
+DELIMITER $$
+CREATE PROCEDURE getPages()
+BEGIN
+	select * from games;
+END ; $$
+DELIMITER ;
+-- end getPages
+DELIMITER $$
+CREATE PROCEDURE getPagesBySearch(IN gameName varchar(255))
+BEGIN
+	select * from games as g
+    where g.gameName like (concat('%',gameName,'%'));
+END ; $$
+DELIMITER ;
+-- end getPagesBySearch
 DELIMITER $$
 	CREATE TRIGGER tg_beforeUpdate
 	BEFORE UPDATE ON accounts FOR EACH ROW

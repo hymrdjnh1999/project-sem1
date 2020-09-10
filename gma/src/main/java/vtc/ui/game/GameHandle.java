@@ -21,12 +21,13 @@ public class GameHandle {
     }
 
     public void showGame(int offSet, String type) throws Exception {
+        
         if (type.equalsIgnoreCase("search")) {
             showGameWithSearch(gameName, offSet);
         }
         gameList = new GameBL().getGameList(offSet);
         ShowGame.showGameList(offSet, gameList);
-        GameHelper gameHelper = new GameHelper(offSet, gameList, type);
+        GameHelper gameHelper = new GameHelper(offSet, gameList, type, gameName);
         gameHelper.pagiNation();
     }
 
@@ -52,7 +53,7 @@ public class GameHandle {
         GameBL gameBL = new GameBL();
         gameList = gameBL.getGameListByName(gameName, offSet);
         ShowGame.showGameList(offSet, gameList);
-        GameHelper gameHelper = new GameHelper(offSet, gameList, "search");
+        GameHelper gameHelper = new GameHelper(offSet, gameList, "search", gameName);
         gameHelper.pagiNation();
     }
 

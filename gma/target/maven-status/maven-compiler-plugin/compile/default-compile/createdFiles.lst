@@ -7,6 +7,7 @@ vtc\ui\game\BuyGame.class
 vtc\ui\membership\RechargeMoney.class
 vtc\ui\order\OrderMenu.class
 vtc\ui\game\GameHelper.class
+vtc\persistances\Publiser.class
 vtc\ui\order\Vieworderhistory.class
 vtc\ui\MainMenu.class
 vtc\dal\AccountDAL.class
@@ -21,5 +22,6 @@ vtc\ui\membership\Membership.class
 vtc\ui\membership\EraserThread.class
 vtc\persistances\Game.class
 vtc\ui\game\ShowGameDetail.class
+vtc\persistances\Category.class
 vtc\dal\OrderDAL.class
 vtc\bl\OrderBL.class

@@ -9,6 +9,16 @@ import vtc.persistances.Game;
 public class GameBL {
     private GameDAL gameDAL = new GameDAL();
 
+    public int getNumberOfPage() {
+        int numberOfPage = gameDAL.getPages();
+        return numberOfPage;
+    }
+
+    public int getNumberOfPageBySearch(String gameName) {
+        int numberOfPage = gameDAL.getPagesBySearch(gameName);
+        return numberOfPage;
+    }
+
     public List<Game> getGameList(int offset) {
         return gameDAL.getAllGames(offset);
     }
@@ -21,12 +31,13 @@ public class GameBL {
     public void increaseDownloadTimes(int gameID) {
         gameDAL.updateDownloadTimes(gameID);
     }
-    public Game getGameByID(int gameID)
-    {
+
+    public Game getGameByID(int gameID) {
         Game game = new Game();
-        game  =  gameDAL.getGameByID(gameID);
+        game = gameDAL.getGameByID(gameID);
         return game;
     }
+
     public int getDownloadTimes(int gameID) {
         int downloadTimes = gameDAL.getDownloadTime(gameID);
         return downloadTimes;

@@ -1,6 +1,5 @@
 package vtc.persistances;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Order {
