@@ -18,23 +18,23 @@ public class Vieworderhistory {
 
     public void VerifyLogin() throws Exception {
         String line = "--------------------------------------------------------------------------------";
-        while (true) {
-            UIUtil.clrscr();
+        UIUtil.clrscr();
+        System.out.println(line);
+        UIUtil.printHeader(line);
+        if (!isLogin()) {
+            UIUtil.printTextAlign(line, "Error reprot");
             System.out.println(line);
-            UIUtil.printHeader(line);
-            if (!isLogin()) {
-                UIUtil.printTextAlign(line, "Error reprot");
-                System.out.println(line);
-                UIUtil.printTextAlign(line, "You must have to login before view order history!");
-                System.out.println(line);
-                System.out.print("Enter any key to continue...");
-                sc.nextLine();
-                return;
-            }
-            Account account = new Membership().getAccount();
-            orders = new OrderBL().getOrders(account.getAccountID());
-            showOrderList();
+            UIUtil.printTextAlign(line, "You must have to login before view order history!");
+            System.out.println(line);
+            System.out.print("Enter any key to Login...");
+            sc.nextLine();
+            UIUtil.clrscr();
+
+            new Membership().loginForm();
         }
+        Account account = new Membership().getAccount();
+        orders = new OrderBL().getOrders(account.getAccountID());
+        showOrderList();
     }
 
     private boolean isLogin() {

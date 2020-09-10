@@ -19,6 +19,7 @@ public class RechargeMoney {
             displayBalanceInfo();
             Double money = enterMoney();
             checkOutRechargeMoney(money);
+
         }
 
     }

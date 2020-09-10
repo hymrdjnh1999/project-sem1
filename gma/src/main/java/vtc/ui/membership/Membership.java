@@ -79,7 +79,7 @@ public class Membership {
             System.out.println(line);
             enterAccount();
         }
-        displayMembershipMenu();
+      
     }
 
     private void enterAccount() throws Exception {

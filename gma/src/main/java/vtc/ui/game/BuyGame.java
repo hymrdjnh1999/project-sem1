@@ -65,11 +65,14 @@ public class BuyGame {
         sc.nextLine();
     }
 
-    public void reportNotLogin(String line) {
+    public void reportNotLogin(String line) throws Exception {
         UIUtil.printTextAlign(line, "[You must to login before buy game!]");
         System.out.println(line);
-        System.out.print("Enter any key to back...");
+        System.out.print("Enter any key to login...");
         sc.nextLine();
+        UIUtil.clrscr();
+        new Membership().loginForm();
+        return;
     }
 
     public void showOrderDetail(Order order) throws Exception {

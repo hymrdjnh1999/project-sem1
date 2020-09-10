@@ -39,6 +39,7 @@ public class MainMenu {
             case "1":
                 UIUtil.clrscr();
                 membership.loginForm();
+                membership.displayMembershipMenu();
                 break;
             case "2":
                 GameMenu.displayGameMenu();
