@@ -43,7 +43,7 @@ public class UIUtil {
     }
 
     public static void backMembershipMenu() throws Exception {
-        System.out.print("Enter Q to back : ");
+        System.out.print("Enter Q to quit : ");
         while (true) {
 
             String choose = sc.nextLine();

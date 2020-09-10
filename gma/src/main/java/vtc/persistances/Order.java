@@ -1,9 +1,11 @@
 package vtc.persistances;
 
+import java.sql.Date;
+
 public class Order {
     int orderID, accountID, gameID;
-    Double priceOfGame, totalBill;
-    String createDateTime;
+    Double totalBill;
+    Date createDateTime;
     String orderStatus = "unPaid";
 
     public void setAccountID(int accountID) {
@@ -14,7 +16,7 @@ public class Order {
         this.gameID = gameID;
     }
 
-    public void setCreateDateTime(String createDateTime) {
+    public void setCreateDateTime(Date createDateTime) {
         this.createDateTime = createDateTime;
     }
 
@@ -24,10 +26,6 @@ public class Order {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
-    }
-
-    public void setPriceOfGame(Double priceOfGame) {
-        this.priceOfGame = priceOfGame;
     }
 
     public void setTotalBill(Double totalBill) {
@@ -42,7 +40,7 @@ public class Order {
         return gameID;
     }
 
-    public String getCreateDateTime() {
+    public Date getCreateDateTime() {
         return createDateTime;
     }
 
@@ -52,10 +50,6 @@ public class Order {
 
     public String getOrderStatus() {
         return orderStatus;
-    }
-
-    public Double getPriceOfGame() {
-        return priceOfGame;
     }
 
     public Double getTotalBill() {

@@ -12,14 +12,13 @@ import vtc.persistances.Order;
 
 public class OrderDAL {
     public void insertOrder(Order order) {
-        String sql = "{call createOrder(?,?,?,?,?,?)}";
+        String sql = "{call createOrder(?,?,?,?,?)}";
         try (Connection con = DbUtil.getConnection(); CallableStatement cas = con.prepareCall(sql);) {
             cas.setInt(1, order.getAccountID());
             cas.setInt(2, order.getGameID());
-            cas.setDouble(3, order.getPriceOfGame());
-            cas.setString(4, order.getCreateDateTime());
-            cas.setDouble(5, order.getTotalBill());
-            cas.setString(6, order.getOrderStatus());
+            cas.setDate(3, order.getCreateDateTime());
+            cas.setDouble(4, order.getTotalBill());
+            cas.setString(5, order.getOrderStatus());
             cas.execute();
             con.close();
         } catch (Exception e) {
@@ -62,8 +61,7 @@ public class OrderDAL {
         Order order = new Order();
         order.setOrderID(rs.getInt("orderID"));
         order.setGameID(rs.getInt("gameID"));
-        order.setCreateDateTime(rs.getString("orderCreateDate"));
-        order.setPriceOfGame(rs.getDouble("priceOfGame"));
+        order.setCreateDateTime(rs.getDate("orderCreateDate"));
         order.setTotalBill(rs.getDouble("totalBill"));
         order.setAccountID(rs.getInt("accountID"));
         order.setOrderStatus(rs.getString("orderStatus"));

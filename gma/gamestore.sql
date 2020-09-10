@@ -72,8 +72,7 @@ CREATE TABLE orders (
     orderID INT AUTO_INCREMENT,
     accountID INT NOT NULL,
     gameID INT NOT NULL,
-    priceOfgame DOUBLE NOT NULL,
-    orderCreateDate VARCHAR(255) NOT NULL,
+    orderCreateDate DATETIME NOT NULL,
     totalBill DOUBLE NOT NULL,
     orderstatus NVARCHAR(255) NOT NULL,
     FOREIGN KEY (accountID)
@@ -85,7 +84,7 @@ CREATE TABLE orders (
     PRIMARY KEY (orderID)
 );
 
--- 11: CREATE TABLE options 
+-- 11. CREATE TABLE options 
 CREATE TABLE options (
     optionID INT AUTO_INCREMENT,
     optionName NVARCHAR(225) NOT NULL,
@@ -1439,10 +1438,10 @@ END; $$
 DELIMITER ;
 -- end getGameByID
 DELIMITER $$
-CREATE PROCEDURE createOrder(IN accountID INT,IN gameID INT,IN priceOfGame DOUBLE, IN orderCreateDate VARCHAR(255) ,IN totalBill double ,IN orderStatus VARCHAR(255))
+CREATE PROCEDURE createOrder(IN accountID INT,IN gameID INT, IN orderCreateDate VARCHAR(255) ,IN totalBill double ,IN orderStatus VARCHAR(255))
 BEGIN
-	iNSERT INTO orders(accountID,gameID,priceOfGame,orderCreateDate,totalBill,orderStatus)
-    VALUES (accountID,gameID,priceOfGame,orderCreateDate,totalBill,orderStatus);
+	iNSERT INTO orders(accountID,gameID,orderCreateDate,totalBill,orderStatus)
+    VALUES (accountID,gameID,orderCreateDate,totalBill,orderStatus);
 END; $$
 DELIMITER ;
 -- end createOrder

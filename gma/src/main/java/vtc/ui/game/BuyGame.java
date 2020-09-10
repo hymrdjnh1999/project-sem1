@@ -1,7 +1,5 @@
 package vtc.ui.game;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 
 import vtc.Util;
@@ -16,40 +14,47 @@ import vtc.ui.membership.Membership;
 
 public class BuyGame {
     static Scanner sc = new Scanner(System.in);
+    static GameBL gameBL = new GameBL();
     Game game;
 
     public void verify(Game game) throws Exception {
         this.game = game;
         String line = "---------------------------------------------------------------------";
-        String content = "[Do you want get ] : " + game.getGameName() + " with " + UIUtil.getGamePrice(game)
-                + " (y/n)? ";
-        Account account = new Membership().getAccount();
-        UIUtil.clrscr();
-        System.out.println(line);
-        UIUtil.printHeader(line);
-        UIUtil.printTextAlign(line, "Check out buy game");
-        System.out.println(line);
-        boolean isLogin = account.getStatus().equalsIgnoreCase("active");
-        if (!isLogin) {
-            reportNotLogin(line);
-            // throw new Exception("Have to login before buy game!");
+        while (true) {
+
+            String content = "[Do you want get ] : " + game.getGameName() + " with " + UIUtil.getGamePrice(game)
+                    + " (y/n)? ";
+            Account account = new Membership().getAccount();
+            UIUtil.clrscr();
+            System.out.println(line);
+            UIUtil.printHeader(line);
+            UIUtil.printTextAlign(line, "Check out buy game");
+            System.out.println(line);
+            boolean isLogin = account.getStatus().equalsIgnoreCase("active");
+            if (!isLogin) {
+                reportNotLogin(line);
+                if (gameBL.isGameBought(game.getGameID(), new Membership().getAccount())) {
+                    return;// has bought game and return current game detail
+                }
+                // throw new Exception("Have to login before buy game!");
+                continue;// continue check out buy game
+            }
+            String verify = Util.getYesNo(content);
+            if (verify.equalsIgnoreCase("n")) {
+                return;// return to current game detail
+            }
+            if (!checkBalance(game, account)) {
+                reportHaveNotEnoughMoney(line);
+                return; // return to current game detail
+            }
+            new AccountBL().subtractMoney(this.game, account.getUserName());
+            new GameBL().increaseDownloadTimes(game.getGameID());
+            OrderBL orderBL = new OrderBL();
+            orderBL.initOrder(game, account);
+            Order order = new OrderBL().getCurrentOrder(game.getGameID(), account.getAccountID());
+            showOrderDetail(order);
             return; // return to current game detail
         }
-        String verify = Util.getYesNo(content);
-        if (verify.equalsIgnoreCase("n")) {
-            return;// return to current game detail
-        }
-        if (!checkBalance(game, account)) {
-            reportHaveNotEnoughMoney(line);
-            return; // return to current game detail
-        }
-        new AccountBL().subtractMoney(this.game, account.getUserName());
-        new GameBL().increaseDownloadTimes(game.getGameID());
-        OrderBL orderBL = new OrderBL();
-        orderBL.initOrder(game, account);
-        Order order = new OrderBL().getCurrentOrder(game.getGameID(), account.getAccountID());
-        showOrderDetail(order);
-        return; // return to current game detail
     }
 
     void reportHaveNotEnoughMoney(String line) {
@@ -78,8 +83,7 @@ public class BuyGame {
     public void showOrderDetail(Order order) throws Exception {
         Account account = new Membership().getAccount();
         Game game = new GameBL().getGameByID(order.getGameID());
-        Date now = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("E MM, yyyy HH:mm aa");
+        java.sql.Date d = order.getCreateDateTime();
         String line = "--------------------------------------------------------------------------------";
         String separatorLine = "|------------------------------------------------------------------------------|";
         UIUtil.clrscr();
@@ -87,7 +91,7 @@ public class BuyGame {
         UIUtil.printHeader(line);
         UIUtil.printTextAlign(line, "Order Detail");
         System.out.println(separatorLine);
-        String date = "Date : " + sdf.format(now);
+        String date = "Date : " + d.toString();
         UIUtil.printTextNormal(line, "Order ID : " + order.getOrderID());
         UIUtil.printTextNormal(line, "Customer name : " + account.getFullName());
         UIUtil.printTextNormal(line, date);
@@ -105,7 +109,7 @@ public class BuyGame {
     }
 
     public static String checkGameIsBought(Game game) {
-        GameBL gameBL = new GameBL();
+
         int gameID = game.getGameID();
         boolean isGameBought = gameBL.isGameBought(gameID, new Membership().getAccount());
         if (isGameBought) {

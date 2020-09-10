@@ -152,26 +152,26 @@ public class GameHelper {
             return "(N : next | P : previous | Index : " + index + " | Q : back) : ";
         }
         if (size == 0 && offSet > 0) {
-            return "( P : previous | Q : back) : ";
+            return "( P : previous | Q : quit) : ";
         }
 
-        return "(N : next | Index :  " + index + " | Q : back) : ";
+        return "(N : next | Index :  " + index + " | Q : quit) : ";
     }
 
     private String showReportSearch() {
         Integer size = gameList.size();
         String index = "" + (offSet + 1) + " - " + (offSet + gameList.size());
         if (size == 0 && offSet == 0) {
-            return "Enter Q to back : ";
+            return "Enter Q to quit : ";
         }
         if (size == 0 && offSet > 0) {
-            return "( P : previous | Q : back) : ";
+            return "( P : previous | Q : quit) : ";
         }
         if (offSet > 0 && size > 0) {
-            return "(N : next | P : previous | Index : " + index + " | Q : back) : ";
+            return "(N : next | P : previous | Index : " + index + " | Q : quit) : ";
         }
 
-        return "(N : next | Index :  " + index + " | Q : back) : ";
+        return "(N : next | Index :  " + index + " | Q : quit) : ";
     }
 
     public void checkInputIsGameIndex(String input) throws Exception {

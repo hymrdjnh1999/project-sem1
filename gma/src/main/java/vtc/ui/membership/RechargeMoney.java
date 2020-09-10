@@ -32,7 +32,7 @@ public class RechargeMoney {
         UIUtil.printTextAlign(line, "Check out recharge money");
         System.out.println(line);
         String yn = Util
-                .getYesNo("Do you want recharge [" + UIUtil.separatorNumber(money) + "] VND to your wallet?(y/n)");
+                .getYesNo("Do you want recharge [" + UIUtil.separatorNumber(money) + "] VND to your wallet?(y/n) : ");
         if (yn.equalsIgnoreCase("y")) {
             sendRechargeReport(money);
             UIUtil.backMembershipMenu();
@@ -78,7 +78,7 @@ public class RechargeMoney {
         Double money = 0d;
 
         while (true) {
-            System.out.print("Enter money(q : back to membership menu) : ");
+            System.out.print("Enter money(q : quit) : ");
             String input = sc.nextLine();
             if (!isValidMoney(input)) {
                 System.out.println("Wrong data type input. Please re-enter");

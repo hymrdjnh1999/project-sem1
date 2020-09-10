@@ -96,7 +96,7 @@ public class ShowGameDetail {
     private void notBought() throws Exception {
 
         while (true) {
-            System.out.print("Enter (B : buy | Q : back): ");
+            System.out.print("Enter (B : buy | Q : quit): ");
             String choose = sc.nextLine();
             if (UIUtil.isBack(choose)) {
                 new GameHandle().showGame(offSet, viewType);
