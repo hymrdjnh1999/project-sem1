@@ -1,5 +1,7 @@
 package vtc.ui.game;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 import vtc.Util;
@@ -83,7 +85,9 @@ public class BuyGame {
     public void showOrderDetail(Order order) throws Exception {
         Account account = new Membership().getAccount();
         Game game = new GameBL().getGameByID(order.getGameID());
-        java.sql.Date d = order.getCreateDateTime();
+        Timestamp dateTime = order.getCreateDateTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("E MM, yyyy HH:mm:ss aa");
+        String dateShow = sdf.format(dateTime);
         String line = "--------------------------------------------------------------------------------";
         String separatorLine = "|------------------------------------------------------------------------------|";
         UIUtil.clrscr();
@@ -91,7 +95,7 @@ public class BuyGame {
         UIUtil.printHeader(line);
         UIUtil.printTextAlign(line, "Order Detail");
         System.out.println(separatorLine);
-        String date = "Date : " + d.toString();
+        String date = "Date : " + dateShow.toString();
         UIUtil.printTextNormal(line, "Order ID : " + order.getOrderID());
         UIUtil.printTextNormal(line, "Customer name : " + account.getFullName());
         UIUtil.printTextNormal(line, date);

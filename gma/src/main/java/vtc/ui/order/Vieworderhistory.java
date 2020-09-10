@@ -1,5 +1,6 @@
 package vtc.ui.order;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Scanner;
 
@@ -64,8 +65,11 @@ public class Vieworderhistory {
             for (Order order : orders) {
                 int gameID = order.getGameID();
                 Game game = new GameBL().getGameByID(gameID);
+                String orderDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss aa").format(order.getCreateDateTime());
                 UIUtil.printTextNormal(line, "Order ID : " + order.getOrderID());
                 UIUtil.printTextNormal(line, "Game name : " + game.getGameName());
+                UIUtil.printTextNormal(line, "Category : " + game.getGameType());
+                UIUtil.printTextNormal(line, "Order date : " + orderDate);
                 System.out.println(separatorLine);
             }
             int orderID = handleOrderDetail();

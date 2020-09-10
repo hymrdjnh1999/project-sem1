@@ -1438,10 +1438,10 @@ END; $$
 DELIMITER ;
 -- end getGameByID
 DELIMITER $$
-CREATE PROCEDURE createOrder(IN accountID INT,IN gameID INT, IN orderCreateDate VARCHAR(255) ,IN totalBill double ,IN orderStatus VARCHAR(255))
+CREATE PROCEDURE createOrder(IN accountID INT,IN gameID INT ,IN totalBill double ,IN orderStatus VARCHAR(255))
 BEGIN
 	iNSERT INTO orders(accountID,gameID,orderCreateDate,totalBill,orderStatus)
-    VALUES (accountID,gameID,orderCreateDate,totalBill,orderStatus);
+    VALUES (accountID,gameID,now(),totalBill,orderStatus);
 END; $$
 DELIMITER ;
 -- end createOrder
@@ -1502,7 +1502,8 @@ DELIMITER $$
 CREATE PROCEDURE getOrders(IN  accountID INT)
 BEGIN
 	SELECT * FROM orders AS o 
-    WHERE o.accountID = accountID;
+    WHERE o.accountID = accountID
+    order by o.orderCreateDate desc;
 END ; $$
 DELIMITER ;
 DELIMITER $$

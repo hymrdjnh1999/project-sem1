@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import vtc.persistances.Game;
 
@@ -25,7 +24,6 @@ public class GameDAL {
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            new Scanner(System.in).nextLine();
         }
         return gameList;
     }

@@ -1,8 +1,6 @@
 
 package vtc.bl;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import vtc.dal.OrderDAL;
@@ -15,9 +13,6 @@ public class OrderBL {
 
     public void initOrder(Game game, Account account) throws Exception {
         Order order = new Order();
-        long milis = System.currentTimeMillis();
-        java.sql.Date date = new java.sql.Date(milis);
-        order.setCreateDateTime(date);
         order.setAccountID(account.getAccountID());
         order.setGameID(game.getGameID());
         order.setTotalBill(game.getGamePrice());
