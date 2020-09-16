@@ -28,7 +28,6 @@ public class BuyGame {
             Account account = new Membership().getAccount();
             String content = "[Do you want get ] : " + game.getGameName() + " with " + UIUtil.getGamePrice(game)
                     + " (y/n)? ";
-
             UIUtil.clrscr();
             System.out.println(line);
             UIUtil.printHeader(line);
@@ -37,11 +36,11 @@ public class BuyGame {
             boolean isLogin = account.getStatus().equalsIgnoreCase("active");
             if (!isLogin) {
                 reportNotLogin(line);
-                if (gameBL.isGameBought(game.getGameID(), new Membership().getAccount())) {
-                    return;// has bought game and return current game detail
-                }
                 // throw new Exception("Have to login before buy game!");
                 continue;// continue check out buy game if user has not bought game
+            }
+            if (gameBL.isGameBought(game.getGameID(), new Membership().getAccount())) {
+                return;// has bought game and return current game detail
             }
             String verify = Util.getYesNo(content);
             if (verify.equalsIgnoreCase("n")) {
@@ -57,7 +56,7 @@ public class BuyGame {
             new GameBL().increaseDownloadTimes(game.getGameID());
             OrderBL orderBL = new OrderBL();
             orderBL.initOrder(game, account);
-            Order order = new OrderBL().getCurrentOrder(game.getGameID(), account.getAccountID());
+            Order order = orderBL.getCurrentOrder(game.getGameID(), account.getAccountID());
             showOrderDetail(order);
             return; // return to current game detail
         }

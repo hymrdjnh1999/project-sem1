@@ -55,7 +55,7 @@ public class RechargeMoney {
                 .getYesNo("Do you want recharge [" + UIUtil.separatorNumber(money) + "] VND to your wallet?(y/n) : ");
         if (yn.equalsIgnoreCase("y")) {
             sendRechargeReport(money);
-           
+
         }
         return;
     }
